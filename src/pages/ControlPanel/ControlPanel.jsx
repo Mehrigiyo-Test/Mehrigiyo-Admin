@@ -1,7 +1,12 @@
 import React from "react";
 import "./ControlPanel.scss";
+import "../../_global.scss";
 
 const ControlPanel = () => {
-  return <div>ControlPanel</div>;
+  return (
+    <>
+      <h1>ControlPanel</h1>
+    </>
+  );
 };
 export default ControlPanel;
