@@ -1,14 +1,17 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.scss";
-import ControlPanel from "./pages/ControlPanel/ControlPanel";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+import routes from "./routes";
 
+import "./App.scss";
 function App() {
   return (
-    <Router>
+    <Layout>
       <Routes>
-        <Route path="/" element={<ControlPanel />} />
+        {routes.map(({ path, element }) => (
+          <Route path={path} element={element} key={path} />
+        ))}
       </Routes>
-    </Router>
+    </Layout>
   );
 }
 

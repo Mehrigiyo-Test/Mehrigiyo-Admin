@@ -1,0 +1,70 @@
+.headerWrapper {
+  padding: 0 100px;
+}
+.title {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+}
+.about {
+  display: flex;
+}
+.headerTopContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  align-items: center;
+}
+.dropdown {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+  gap: 10px;
+  font-size: 14px;
+}
+.dropdown > span {
+  display: flex;
+}
+.dropdown::after {
+  content: "";
+  background-color: #b0b7c366;
+  width: 1px;
+  height: 20px;
+}
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #000;
+  font-size: 14px;
+}
+.userAvatar {
+  width: 25px;
+  height: 25px;
+  background-color: gray;
+  border-radius: 50%;
+  border: 1px solid #53b175;
+}
+
+.headerBottomContainer{
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-top: 40px;
+}
+
+.bottomTitle{
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+    opacity: 0.4;
+    padding-left: 50px;
+}
+.actions{
+    display: flex;
+    align-items: center;
+}
+.actions > span{
+    display: flex;
+}
