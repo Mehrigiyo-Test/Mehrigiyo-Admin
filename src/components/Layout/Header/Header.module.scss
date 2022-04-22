@@ -1,48 +1,49 @@
-.title {
-  display: flex;
-  gap: 20px;
-  font-size: 12px;
-}
-.about {
-  display: flex;
-}
 .headerTopContainer {
   display: flex;
   justify-content: space-between;
   padding: 12px 100px;
   align-items: center;
   background-color: #fff;
-}
-.dropdown {
-  display: flex;
-  align-items: center;
-  padding-right: 15px;
-  gap: 10px;
-  font-size: 14px;
-}
-.dropdown > span {
-  display: flex;
-}
-.dropdown::after {
-  content: "";
-  background-color: #b0b7c366;
-  width: 1px;
-  height: 20px;
-}
-.user {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  color: #000;
-  font-size: 14px;
-}
-.userAvatar {
-  width: 25px;
-  height: 25px;
-  background-color: gray;
-  border-radius: 50%;
-  border: 1px solid #53b175;
+  .title {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+  }
+  .about {
+    display: flex;
+    .dropdown {
+      display: flex;
+      align-items: center;
+      padding-right: 15px;
+      gap: 10px;
+      font-size: 14px;
+    }
+    .dropdown > span {
+      display: flex;
+    }
+    .dropdown::after {
+      content: "";
+      background-color: #b0b7c366;
+      width: 1px;
+      height: 20px;
+    }
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: #000;
+      font-size: 14px;
+    }
+    .userAvatar {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      img{
+        width: 100%;
+      }
+    }
+  }
 }
 
 .headerBottomContainer {
@@ -50,20 +51,20 @@
   align-items: center;
   justify-content: space-between;
   padding: 40px 100px 0;
+  .actions {
+    display: flex;
+    align-items: center;
+    .bottomTitle {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #282828cd;
+      padding-left: 50px;
+    }
+  }
+  .actions > span {
+    display: flex;
+  }
 }
 
-.bottomTitle {
-  display: flex;
-  gap: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #282828cd;
-  padding-left: 50px;
-}
-.actions {
-  display: flex;
-  align-items: center;
-}
-.actions > span {
-  display: flex;
-}

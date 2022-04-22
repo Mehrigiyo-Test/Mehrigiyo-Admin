@@ -5,7 +5,7 @@ import style from "./../Header.module.scss";
 import { ReactComponent as UzbFlag } from "./../../../../icons/Header/UzbFlag.svg";
 import { ReactComponent as Arrow } from "./../../../../icons/Header/Arrow.svg";
 import { ReactComponent as Location } from "./../../../../icons/Header/Location.svg";
-
+import { user } from "../../../../constants/user";
 const TopHeader = () => {
   const titles = [
     { text: `Mahsulotlar katalogi`, link: `#` },
@@ -14,6 +14,7 @@ const TopHeader = () => {
     { text: `Aksiya`, link: `#`, color: `#AB7A19` },
     { text: `Yangi`, link: `#`, color: `#53B175` },
   ];
+
   return (
     <section className={style.headerTopContainer}>
       <div className={style.title}>
@@ -35,14 +36,21 @@ const TopHeader = () => {
         <div className={style.dropdown}>
           <p>Toshkent shahar</p>
           <span>
-            <Location/>
+            <Location />
           </span>
         </div>
         <div className={style.user}>
-          <span className={style.userAvatar}>
-
-          </span>
-          <p>N.Mahmud</p>
+          {user.map((item, index) => (
+            <>
+              <span className={style.userAvatar}>
+                <img src={item.img} alt="user" />
+              </span>
+              <div key={index} style={{ display: "flex" }}>
+                <p>{item.surname[0]}.</p>
+                <p>{item.name}</p>
+              </div>
+            </>
+          ))}
         </div>
       </div>
     </section>

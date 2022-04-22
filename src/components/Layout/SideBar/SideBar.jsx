@@ -11,7 +11,7 @@ import { ReactComponent as Notification } from "./../../../icons/Sidebar/Notific
 import { ReactComponent as Orders } from "./../../../icons/Sidebar/Orders.svg";
 import { ReactComponent as PaymentMethods } from "./../../../icons/Sidebar/PaymentMethods.svg";
 import { ReactComponent as Setting } from "./../../../icons/Sidebar/Setting.svg";
-
+import { user } from "../../../constants/user";
 const SideBar = () => {
   const navigate = useNavigate();
   const onPushPath = (href) => {
@@ -41,12 +41,18 @@ const SideBar = () => {
   return (
     <section className={style.container}>
       <div className={style.user}>
-        <span className={style.avatar}></span>
-        <span>
-          <h4 className={style.h4}>Nurmuhammedov</h4>
-          <h4 className={style.h4}>Mahmudjon</h4>
-          <p className={style.p}>+998(99) 090-09-98</p>
-        </span>
+        {user.map((item, index) => (
+          <div key={index}>
+            <span className={style.avatar}>
+              <img src={item.img} alt="user"/>
+            </span>
+            <span>
+              <h4 className={style.h4}>{item.surname}</h4>
+              <h4 className={style.h4}>{item.name}</h4>
+              <p className={style.p}>{item.number}</p>
+            </span>
+          </div>
+        ))}
         <span className={style.pen}>
           <Pen />
         </span>
@@ -65,7 +71,7 @@ const SideBar = () => {
       </div>
       <div className={style.logout}>
         <span>
-          <LogOut/>
+          <LogOut />
         </span>
         <p className={style.log}>Log Out</p>
       </div>
