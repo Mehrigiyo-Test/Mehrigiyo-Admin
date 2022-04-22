@@ -1,11 +1,19 @@
 import React from "react";
-import "./ControlPanel.scss";
+import styles from "./ControlPanel.module.scss";
 import "../../_global.scss";
+import Title from "../../components/Title/Title";
 
 const ControlPanel = () => {
   return (
     <>
-      <h1>ControlPanel</h1>
+      <section className={styles.container}>
+        <div >
+          <Title
+            title={"Umumiy koʻrinish"}
+            subtitle={"Bugun bemorlarimizga xizmat qilish uchun ajoyib kun."}
+          />
+        </div>
+      </section>
     </>
   );
 };

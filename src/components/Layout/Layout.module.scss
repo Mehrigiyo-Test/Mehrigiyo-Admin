@@ -1,6 +1,9 @@
-.layoutContainer{
-    
-}
-.wrapper{
+.layoutContainer {
+  .wrapper {
     display: flex;
+    .child {
+        margin-top: 20px;
+        margin-left: 32px;
+    }
+  }
 }

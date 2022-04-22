@@ -1,6 +1,3 @@
-.headerWrapper {
-  padding: 0 100px;
-}
 .title {
   display: flex;
   gap: 20px;
@@ -12,8 +9,9 @@
 .headerTopContainer {
   display: flex;
   justify-content: space-between;
-  padding: 12px 0;
+  padding: 12px 100px;
   align-items: center;
+  background-color: #fff;
 }
 .dropdown {
   display: flex;
@@ -47,24 +45,25 @@
   border: 1px solid #53b175;
 }
 
-.headerBottomContainer{
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding-top: 40px;
+.headerBottomContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 100px 0;
 }
 
-.bottomTitle{
-    display: flex;
-    gap: 20px;
-    font-size: 16px;
-    opacity: 0.4;
-    padding-left: 50px;
+.bottomTitle {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #282828cd;
+  padding-left: 50px;
 }
-.actions{
-    display: flex;
-    align-items: center;
+.actions {
+  display: flex;
+  align-items: center;
 }
-.actions > span{
-    display: flex;
+.actions > span {
+  display: flex;
 }

@@ -6,16 +6,23 @@ import { ReactComponent as Search } from "./../../../../icons/Header/Search.svg"
 import { ReactComponent as Cabinet } from "./../../../../icons/Header/Cabinet.svg";
 import { ReactComponent as Heart } from "./../../../../icons/Header/Heart.svg";
 import { ReactComponent as Cart } from "./../../../../icons/Header/Cart.svg";
+import {
+  onlineDoctors,
+  products,
+  news,
+  helps,
+} from "./../../../../constants/header";
 import { Link } from "react-router-dom";
+import Dropdown from "../../../Dropdown/Dropdown";
 
 const BottomHeader = () => {
   const navElements = [
     { title: `Bosh sahifa` },
-    { title: `Onlayn shifokorlar` },
-    { title: `Mahsulotlar` },
+    { title: `Onlayn shifokorlar`, dropdownItems: onlineDoctors },
+    { title: `Mahsulotlar`, dropdownItems: products },
     { title: `Biz haqimizda` },
-    { title: `Yangiliklar` },
-    { title: `Yordam` },
+    { title: `Yangiliklar`, dropdownItems: news },
+    { title: `Yordam`, dropdownItems: helps },
   ];
   const actions = [
     { icon: <Search />, path: `#` },
@@ -33,10 +40,13 @@ const BottomHeader = () => {
           {navElements.map((item, index) =>
             item.dropdownItems ? (
               <div key={index}>
-                <div>{item.title}</div>
+                <Dropdown
+                  title={item.title}
+                  dropdownItems={item.dropdownItems}
+                />
               </div>
             ) : (
-              <div>{item.title}</div>
+              <div key={index}>{item.title}</div>
             )
           )}
         </div>

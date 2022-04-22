@@ -67,7 +67,7 @@ const SideBar = () => {
         <span>
           <LogOut/>
         </span>
-        <p>Log Out</p>
+        <p className={style.log}>Log Out</p>
       </div>
     </section>
   );
