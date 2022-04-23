@@ -1,6 +1,5 @@
 import React from "react";
 import "./DeliveryAddress.scss";
-import "../../_global.scss";
 const DeliveryAddress = () => {
   return (
     <>

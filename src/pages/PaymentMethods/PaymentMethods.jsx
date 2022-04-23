@@ -1,6 +1,5 @@
 import React from "react";
 import "./PaymentMethods.scss";
-import "../../_global.scss";
 const PaymentMethods = () => {
   return (
     <>

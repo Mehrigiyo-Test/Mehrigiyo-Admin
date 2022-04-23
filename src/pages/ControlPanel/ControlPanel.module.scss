@@ -1,3 +1,16 @@
+@import './../../_global.scss';
 .container{
     padding-top: 60px;
+    .nextTable{
+        display: flex;
+        justify-content: space-between;
+        h4{
+            color:$black
+        }
+        span{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    }
 }

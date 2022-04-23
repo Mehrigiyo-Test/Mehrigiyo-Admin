@@ -3,16 +3,16 @@ import styles from "./Dropdown.module.scss";
 const Dropdown = ({ title, dropdownItems }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div>
-      <p className={styles.title} onMouseDown={()=> setOpen(!open)} >{title}</p>
+    <div >
+      <div className={styles.title} onMouseDown={()=> setOpen(true)}>{title}</div>
       {open ? (
         <div className={styles.drop}>
-          <section className={styles.container} onMouseLeave={()=> setOpen(!open)}>
+          <section className={styles.container} onMouseLeave={()=> setOpen(false)}>
             {dropdownItems.map((item, index) => (
               <div
                 key={index}
                 className={styles.dropdown}
-                onClick={()=> setOpen(!open)}
+                onClick={()=> setOpen(false)}
               >
                 <p>{item.label}</p>
               </div>

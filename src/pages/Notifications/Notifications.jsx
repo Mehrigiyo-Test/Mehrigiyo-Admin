@@ -1,6 +1,5 @@
 import React from "react";
 import "./Notifications.scss";
-import "../../_global.scss";
 const Notifications = () => {
   return (
     <>
