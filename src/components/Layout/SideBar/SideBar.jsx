@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./SideBar.module.scss";
 import { useNavigate } from "react-router-dom";
 
+import Modal from "../../Modal/Modal";
 import { ReactComponent as Pen } from "./../../../icons/Sidebar/Pen.svg";
 import { ReactComponent as ControlPanel } from "./../../../icons/Sidebar/ControlPanel.svg";
 import { ReactComponent as Consultation } from "./../../../icons/Sidebar/Consultation.svg";
@@ -12,7 +13,10 @@ import { ReactComponent as Orders } from "./../../../icons/Sidebar/Orders.svg";
 import { ReactComponent as PaymentMethods } from "./../../../icons/Sidebar/PaymentMethods.svg";
 import { ReactComponent as Setting } from "./../../../icons/Sidebar/Setting.svg";
 import { user } from "../../../constants/user";
+import Edit from "../../Modal/_components/Edit/Edit";
+
 const SideBar = () => {
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const onPushPath = (href) => {
     navigate({ pathname: `/admin${href}` });
@@ -44,7 +48,7 @@ const SideBar = () => {
         {user.map((item, index) => (
           <div key={index}>
             <span className={style.avatar}>
-              <img src={item.img} alt="user"/>
+              <img src={item.img} alt="user" />
             </span>
             <span>
               <h4 className={style.h4}>{item.surname}</h4>
@@ -53,7 +57,7 @@ const SideBar = () => {
             </span>
           </div>
         ))}
-        <span className={style.pen}>
+        <span className={style.pen} onClick={() => setOpen(!open)}>
           <Pen />
         </span>
       </div>
@@ -75,6 +79,8 @@ const SideBar = () => {
         </span>
         <p className={style.log}>Log Out</p>
       </div>
+
+      {open && <Modal children={<Edit/>} prop={setOpen} />}
     </section>
   );
 };

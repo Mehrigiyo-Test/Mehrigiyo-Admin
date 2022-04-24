@@ -8,30 +8,39 @@
     gap: 12px;
     padding: 30px 20px 20px 30px;
     border-bottom: 1px solid #e2e2e280;
-   div{
-     display: flex;
-     gap: 15px;
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      img{
-       width: 100%;
+    div {
+      display: flex;
+      gap: 15px;
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        img {
+          width: 100%;
+        }
+      }
+      span {
+        .h4 {
+          line-height: 20px;
+        }
+        .p {
+          color: #b0b7c3;
+          font-size: 12px;
+          padding-top: 5px;
+        }
       }
     }
-    span{
-      .h4 {
-        line-height: 20px;
-      }
-      .p {
-        color: #b0b7c3;
-        font-size: 12px;
-        padding-top: 5px;
-      }
-    }
-   }
     .pen {
-      padding-left: 12px;
+      padding: 0 5px;
+      cursor: pointer;
+      border-radius: 50%;
+      height: 22px;
+      transition: 0.5s;
+      &:hover {
+        box-shadow: 0 1px 3px 0px rgba(76, 76, 76, 0.702);
+        background-color: #eef7f1;
+
+      }
     }
   }
   .wrapper {
@@ -69,5 +78,3 @@
     }
   }
 }
-
-
