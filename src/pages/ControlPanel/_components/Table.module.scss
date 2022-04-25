@@ -3,10 +3,11 @@
   background: linear-gradient(274.36deg, #53B175 0.52%, #53B175 21.68%, #63CB89 96.53%), rgba(83, 177, 117, 0.2);
   box-shadow: 0px 25px 50px rgba(83, 177, 117, 0.3);
   border-radius: 20px;
-  padding: 20px;
+  padding: 30px;  
   .wrapper {
     display: flex;
     justify-content: space-between;
+    margin-left: -10px;
     .doctor {
       display: flex;
       gap: 5px;
@@ -76,7 +77,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
-    padding: 11px 18px;
+    padding: 11px 50px;
     border-radius: 30px;
     margin-top: 40px;
     gap: 50px;

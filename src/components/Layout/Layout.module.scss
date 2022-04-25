@@ -3,9 +3,10 @@
   min-height: 100vh;
   .wrapper {
     display: flex;
+    padding-right: 100px;
     .child {
         margin-top: 20px;
-        margin-left: 20px;
+        margin-left: 32px;
     }
   }
 }
