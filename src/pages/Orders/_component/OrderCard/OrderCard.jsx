@@ -5,15 +5,14 @@ import { ReactComponent as Shop } from "../../../../icons/Shop.svg";
 import Marker from "../../../../images/Marker.png";
 const OrderCard = ({ children, background }) => {
   return (
-    <section style={{background: background}} className={styles.container}>
+    <section style={{ background: background }} className={styles.container}>
       <div className={styles.orderLeftBox}>{children}</div>
       <div className={styles.orderRightBox}>
         <div className={styles.mapBox}>
-          {user.map((item) => (
-            <div className={styles.img}>
-              <img src={item.img} alt="" />
-            </div>
-          ))}
+          <div className={styles.img}>
+            <img src={user.img} alt="" />
+          </div>
+
           <div className={styles.marker}>
             <img src={Marker} alt="" />
           </div>
@@ -25,14 +24,14 @@ const OrderCard = ({ children, background }) => {
           </span>
         </div>
         <div className={styles.titleBox}>
-            <div className={styles.textLeft}>
+          <div className={styles.textLeft}>
             <p>Taxminiy kelish</p>
             <h5>20:10 - 20:30</h5>
-            </div>
-            <div className={styles.textRight}>
+          </div>
+          <div className={styles.textRight}>
             <p>Yetkazib beruvchi</p>
             <h5>Bahrom</h5>
-            </div>
+          </div>
         </div>
       </div>
     </section>

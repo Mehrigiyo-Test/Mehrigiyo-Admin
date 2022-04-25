@@ -83,7 +83,7 @@ const SideBar = () => {
 
       {open && <Modal children={<Edit />} prop={setOpen} />}
 
-      {!show && <Modal children={<Login open={setShow} />} />}
+      {!show && <Modal children={<Login open={setShow} />} prop={""} />}
     </section>
   );
 };

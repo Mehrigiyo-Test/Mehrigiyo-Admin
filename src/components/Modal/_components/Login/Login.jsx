@@ -14,7 +14,7 @@ const Login = ({ open }) => {
       surname: data.surname,
       email: data.email,
       number: data.number,
-      img: null,
+      img: data.img,
       password: data.password,
     };
     users.push(newUser);
@@ -29,6 +29,7 @@ const Login = ({ open }) => {
       user.number = currentUser[0].number;
       user.email = currentUser[0].email;
       user.password = currentUser[0].password;
+      user.img = currentUser[0].img;
       open(true);
     } else {
       alert("Foydalanuvchi topilmadi!");
