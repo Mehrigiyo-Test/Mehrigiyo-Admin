@@ -3,9 +3,9 @@ import { user } from "../../../../constants/user";
 import { ReactComponent as Car } from "../../../../icons/Car.svg";
 import { ReactComponent as Shop } from "../../../../icons/Shop.svg";
 import Marker from "../../../../images/Marker.png";
-const OrderCard = ({ children }) => {
+const OrderCard = ({ children, background }) => {
   return (
-    <section className={styles.container}>
+    <section style={{background: background}} className={styles.container}>
       <div className={styles.orderLeftBox}>{children}</div>
       <div className={styles.orderRightBox}>
         <div className={styles.mapBox}>
