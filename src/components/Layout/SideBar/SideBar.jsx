@@ -14,9 +14,11 @@ import { ReactComponent as PaymentMethods } from "./../../../icons/Sidebar/Payme
 import { ReactComponent as Setting } from "./../../../icons/Sidebar/Setting.svg";
 import { user } from "../../../constants/user";
 import Edit from "../../Modal/_components/Edit/Edit";
+import Login from "../../Modal/_components/Login/Login";
 
 const SideBar = () => {
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const onPushPath = (href) => {
     navigate({ pathname: `/admin${href}` });
@@ -45,18 +47,17 @@ const SideBar = () => {
   return (
     <section className={style.container}>
       <div className={style.user}>
-        {user.map((item, index) => (
-          <div key={index}>
-            <span className={style.avatar}>
-              <img src={item.img} alt="user" />
-            </span>
-            <span>
-              <h4 className={style.h4}>{item.surname}</h4>
-              <h4 className={style.h4}>{item.name}</h4>
-              <p className={style.p}>{item.number}</p>
-            </span>
-          </div>
-        ))}
+        <div>
+          <span className={style.avatar}>
+            <img src={user.img} alt="user" />
+          </span>
+          <span>
+            <h4 className={style.h4}>{user.surname}</h4>
+            <h4 className={style.h4}>{user.name}</h4>
+            <p className={style.p}>+{user.number}</p>
+          </span>
+        </div>
+
         <span className={style.pen} onClick={() => setOpen(!open)}>
           <Pen />
         </span>
@@ -81,6 +82,8 @@ const SideBar = () => {
       </div>
 
       {open && <Modal children={<Edit />} prop={setOpen} />}
+
+      {!show && <Modal children={<Login open={setShow} />} />}
     </section>
   );
 };

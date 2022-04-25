@@ -74,14 +74,22 @@ const ControlPanel = () => {
             </span>
             <span className={styles.date}>Today - 12:00</span>
             <div>
-              {arr.map((item) => (
-                <LastNoticeBox title={item.title} subtitle={item.subtitle} />
+              {arr.map((item, index) => (
+                <LastNoticeBox
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  key={index}
+                />
               ))}
             </div>
             <span className={styles.date}>28/01/2022 - 12:00</span>
             <div>
-              {arr.map((item) => (
-                <LastNoticeBox title={item.title} subtitle={item.subtitle} />
+              {arr.map((item, index) => (
+                <LastNoticeBox
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  key={index}
+                />
               ))}
             </div>
           </div>
@@ -90,12 +98,13 @@ const ControlPanel = () => {
             <h4>Muhim jadval</h4>
             {doctors
               .filter((a) => a.name === "Bahrom")
-              .map((item) => (
+              .map((item, index) => (
                 <TableCard
                   name={item.name}
                   surname={item.surname}
                   profession={item.profession}
                   img={item.img}
+                  key={index}
                 />
               ))}
             <img

@@ -3,38 +3,34 @@ import styles from "./Edit.module.scss";
 import { user } from "../../../../constants/user";
 import Button from "../../../Buttons/Button";
 const Edit = () => {
-  const title = user.map((item) => [
+  const title = [
     {
       title: "Foydalanuvchi nomi",
-      item: `${item.surname} ${item.name}`,
+      item: `${user.surname} ${user.name}`,
     },
     {
       title: "Telefon raqami",
-      item: item.number,
+      item: user.number,
     },
     {
       title: "Elektron pochta (optinal)",
-      item: item.email,
+      item: user.email,
     },
-  ]);
+  ];
 
   return (
     <section className={styles.container}>
       <h4>My account</h4>
       <div className={styles.img}>
-        {user.map((item) => (
-          <img src={item.img} alt="" key={item.email} />
-        ))}
+        <img src={user.img} alt="" />
       </div>
       <div className={styles.title}>
-        {title.map((item) =>
-          item.map((item) => (
-            <div>
-              <h6>{item.title}</h6>
-              <p>{item.item}</p>
-            </div>
-          ))
-        )}
+        {title.map((item,index) => (
+          <div key={index}>
+            <h6>{item.title}</h6>
+            <p>{item.item}</p>
+          </div>
+        ))}
       </div>
       <Button title={"Edit"} />
     </section>
