@@ -3,11 +3,10 @@ import styles from "./Edit.module.scss";
 import { user } from "../../../../constants/user";
 import Button from "../../../Buttons/Button";
 const Edit = () => {
-  
-  const title = user.map(item =>([
+  const title = user.map((item) => [
     {
       title: "Foydalanuvchi nomi",
-      item: `${item.surname} ${item.name}` , 
+      item: `${item.surname} ${item.name}`,
     },
     {
       title: "Telefon raqami",
@@ -17,12 +16,10 @@ const Edit = () => {
       title: "Elektron pochta (optinal)",
       item: item.email,
     },
-  ]))
- 
+  ]);
 
   return (
     <section className={styles.container}>
-      
       <h4>My account</h4>
       <div className={styles.img}>
         {user.map((item) => (
@@ -30,14 +27,16 @@ const Edit = () => {
         ))}
       </div>
       <div className={styles.title}>
-          {title.map(item =>item.map(item =>(
-              <div>
-                  <h6>{item.title}</h6>
-                  <p>{item.item}</p>
-              </div>
-          )))}
+        {title.map((item) =>
+          item.map((item) => (
+            <div>
+              <h6>{item.title}</h6>
+              <p>{item.item}</p>
+            </div>
+          ))
+        )}
       </div>
-      <Button title={'Edit'}/>
+      <Button title={"Edit"} />
     </section>
   );
 };

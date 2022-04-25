@@ -7,7 +7,7 @@ const Modal = ({ children, prop }) => {
     <div className={styles.bgContainer}>
       <section className={styles.wrapper}>
         <div className={styles.modal}>
-          <span className={styles.exit} onClick={()=> prop(false)}>
+          <span className={styles.exit} onClick={() => prop(false)}>
             <Exit />
           </span>
           {children}

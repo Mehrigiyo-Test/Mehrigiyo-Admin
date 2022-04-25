@@ -80,7 +80,7 @@ const SideBar = () => {
         <p className={style.log}>Log Out</p>
       </div>
 
-      {open && <Modal children={<Edit/>} prop={setOpen} />}
+      {open && <Modal children={<Edit />} prop={setOpen} />}
     </section>
   );
 };
