@@ -1,11 +1,10 @@
-
-import userr from "../images/user.png"
+import userr from "../images/user.png";
 export const user = [
-    {
-      name: "Mahmud",
-      surname: "Nurmuhammedov",
-      email: "nmahmud0928@gmail.com",
-      number: "+998 (99) 909-09-09",
-      img: userr
-    },
-  ];
+  {
+    name: "Mahmud",
+    surname: "Nurmuhammedov",
+    email: "nmahmud0928@gmail.com",
+    number: "+998 (99) 909-09-09",
+    img: userr,
+  },
+];
