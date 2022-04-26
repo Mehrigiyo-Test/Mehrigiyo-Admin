@@ -12,7 +12,7 @@ import clock from "../../icons/Clock.svg";
 import missedMessage from "../../icons/MissedMessage.svg";
 import leaf from "../../images/Leafs.png";
 
-const Consultation = ({}) => {
+const Consultation = () => {
   const data = [{}];
   // const [click, setClick] = useState('upcoming')
   const [click, setClick] = useState(false);
