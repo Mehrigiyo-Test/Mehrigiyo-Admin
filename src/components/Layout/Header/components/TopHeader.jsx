@@ -40,17 +40,13 @@ const TopHeader = () => {
           </span>
         </div>
         <div className={style.user}>
-          {user.map((item, index) => (
-            <>
-              <span className={style.userAvatar}>
-                <img src={item.img} alt="user" />
-              </span>
-              <div key={index} style={{ display: "flex" }}>
-                <p>{item.surname[0]}.</p>
-                <p>{item.name}</p>
-              </div>
-            </>
-          ))}
+          <span className={style.userAvatar}>
+            <img src={user.img} alt="user" />
+          </span>
+          <div style={{ display: "flex" }}>
+            <p>{user.surname[0]}.</p>
+            <p>{user.name}</p>
+          </div>
         </div>
       </div>
     </section>

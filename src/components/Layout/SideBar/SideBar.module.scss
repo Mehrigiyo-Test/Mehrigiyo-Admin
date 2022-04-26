@@ -1,37 +1,51 @@
 .container {
   background-color: #fff;
-  box-shadow: 0px 10px 40px 4px rgba(51, 51, 51, 0.1);
+  box-shadow: 0px 10px 20px 4px rgba(51, 51, 51, 0.1);
   border-radius: 0px 30px 30px 0px;
   margin-top: 20px;
+  width: 290px;
   .user {
     display: flex;
+    justify-content: space-between;
     gap: 12px;
     padding: 30px 20px 20px 30px;
     border-bottom: 1px solid #e2e2e280;
-   div{
-     display: flex;
-     gap: 15px;
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      img{
-       width: 100%;
+    div {
+      display: flex;
+      gap: 15px;
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid green;
+        background-color: #000;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      span {
+        .h4 {
+          line-height: 20px;
+        }
+        .p {
+          color: #b0b7c3;
+          font-size: 12px;
+          padding-top: 5px;
+        }
       }
     }
-    span{
-      .h4 {
-        line-height: 20px;
-      }
-      .p {
-        color: #b0b7c3;
-        font-size: 12px;
-        padding-top: 5px;
-      }
-    }
-   }
     .pen {
-      padding-left: 12px;
+      padding: 5px 5px;
+      cursor: pointer;
+      border-radius: 50%;
+      height: 23px;
+      transition: 0.5s;
+      &:hover {
+        box-shadow: 0 1px 3px 0px rgba(76, 76, 76, 0.702);
+        background-color: #eef7f1;
+
+      }
     }
   }
   .wrapper {
@@ -69,5 +83,3 @@
     }
   }
 }
-
-

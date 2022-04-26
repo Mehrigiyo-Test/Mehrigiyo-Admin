@@ -26,6 +26,7 @@
       transition: 0.5s;
       &:hover {
         border: 1px solid $green;
+        cursor: pointer;
       }
       &:focus {
         border: 1px solid $green;
@@ -37,8 +38,8 @@
     }
     .search {
       position: relative;
-      right: 130px;
-      top: 3px;
+      right: -8px;
+      top: -28px;
     }
   }
 }

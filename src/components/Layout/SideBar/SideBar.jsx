@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./SideBar.module.scss";
 import { useNavigate } from "react-router-dom";
 
+import Modal from "../../Modal/Modal";
 import { ReactComponent as Pen } from "./../../../icons/Sidebar/Pen.svg";
 import { ReactComponent as ControlPanel } from "./../../../icons/Sidebar/ControlPanel.svg";
 import { ReactComponent as Consultation } from "./../../../icons/Sidebar/Consultation.svg";
@@ -12,7 +13,12 @@ import { ReactComponent as Orders } from "./../../../icons/Sidebar/Orders.svg";
 import { ReactComponent as PaymentMethods } from "./../../../icons/Sidebar/PaymentMethods.svg";
 import { ReactComponent as Setting } from "./../../../icons/Sidebar/Setting.svg";
 import { user } from "../../../constants/user";
+import Edit from "../../Modal/_components/Edit/Edit";
+import Login from "../../Modal/_components/Login/Login";
+
 const SideBar = () => {
+  const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const onPushPath = (href) => {
     navigate({ pathname: `/admin${href}` });
@@ -41,19 +47,18 @@ const SideBar = () => {
   return (
     <section className={style.container}>
       <div className={style.user}>
-        {user.map((item, index) => (
-          <div key={index}>
-            <span className={style.avatar}>
-              <img src={item.img} alt="user"/>
-            </span>
-            <span>
-              <h4 className={style.h4}>{item.surname}</h4>
-              <h4 className={style.h4}>{item.name}</h4>
-              <p className={style.p}>{item.number}</p>
-            </span>
-          </div>
-        ))}
-        <span className={style.pen}>
+        <div>
+          <span className={style.avatar}>
+            <img src={user.img} alt="user" />
+          </span>
+          <span>
+            <h4 className={style.h4}>{user.surname}</h4>
+            <h4 className={style.h4}>{user.name}</h4>
+            <p className={style.p}>+{user.number}</p>
+          </span>
+        </div>
+
+        <span className={style.pen} onClick={() => setOpen(!open)}>
           <Pen />
         </span>
       </div>
@@ -75,6 +80,10 @@ const SideBar = () => {
         </span>
         <p className={style.log}>Log Out</p>
       </div>
+
+      {open && <Modal children={<Edit />} prop={setOpen} />}
+
+      {/* {!show && <Modal children={<Login open={setShow} />} prop={""} />} */}
     </section>
   );
 };
