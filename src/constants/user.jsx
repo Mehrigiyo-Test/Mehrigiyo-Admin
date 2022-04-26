@@ -1,12 +1,5 @@
 import avatar from "../images/user.png";
-import men from "../images/Men.jpg";
-export const user = {
-  name: "Mahmud",
-  surname: "Nurmuhammedov",
-  email: "nmahmud0928@gmail.com",
-  number: "+998 (99) 909-09-09",
-  img: avatar,
-};
+export const user = null;
 
 export const users = [
   {
@@ -14,15 +7,41 @@ export const users = [
     surname: "Nurmuhammedov",
     email: "nmahmud0928@gmail.com",
     number: "998 (99) 909-09-09",
-    password: "123",
+    password: "12345",
     img: avatar,
   },
-  {
-    name: "Xurshid",
-    surname: "Ne'matov",
-    email: "nematoff4744@gmail.com",
-    number: "998 (93) 391-47-44 ",
-    password: "4744",
-    img: men,
-  },
 ];
+
+export const getUser = () => {
+  let u = localStorage.getItem("user");
+  if (u != null) {
+    return JSON.parse(u);
+  }
+  return null;
+};
+
+export const setUser = (data) => {
+  localStorage.setItem("user", JSON.stringify(data));
+};
+
+export const removeUser = () => {
+  localStorage.removeItem("user");
+};
+
+export const usersList = () => {
+  let list = localStorage.getItem("users");
+  if (list != null) {
+    return JSON.parse(list);
+  } else {
+    localStorage.setItem("users", JSON.stringify(users));
+    return users;
+  }
+};
+
+export const create = (data) => {
+  let list = usersList();
+  data.id = list.length + 1;
+  data.img = avatar;
+  list.push(data);
+  localStorage.setItem("users", JSON.stringify(list));
+};

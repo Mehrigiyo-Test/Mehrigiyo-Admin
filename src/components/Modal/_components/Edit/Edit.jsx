@@ -1,39 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Edit.module.scss";
-import { user } from "../../../../constants/user";
+import { getUser } from "../../../../constants/user";
 import Button from "../../../Buttons/Button";
 const Edit = () => {
-  const title = [
-    {
-      title: "Foydalanuvchi nomi",
-      item: `${user.surname} ${user.name}`,
-    },
-    {
-      title: "Telefon raqami",
-      item: user.number,
-    },
-    {
-      title: "Elektron pochta (optinal)",
-      item: user.email,
-    },
-  ];
+  const [user, setUser] = useState(null);
+  const [title, setTitle] = useState([]);
+  useEffect(() => {
+    let users = getUser();
+    setUser(users);
+    
+    let data = [
+      {
+        title: "Foydalanuvchi nomi",
+        item: users.surname + users.name,
+      },
+      {
+        title: "Telefon raqami",
+        item: users.number,
+      },
+      {
+        title: "Elektron pochta (optinal)",
+        item: users.email,
+      },
+    ];
+
+    setTitle(data);
+  }, []);
 
   return (
-    <section className={styles.container}>
-      <h4>My account</h4>
-      <div className={styles.img}>
-        <img src={user.img} alt="" />
-      </div>
-      <div className={styles.title}>
-        {title.map((item,index) => (
-          <div key={index}>
-            <h6>{item.title}</h6>
-            <p>{item.item}</p>
+    <>
+      {user != null && title.length > 0 && (
+        <section className={styles.container}>
+          <h4>My account</h4>
+          <div className={styles.img}>
+            <img src={user.img} alt="" />
           </div>
-        ))}
-      </div>
-      <Button title={"Edit"} />
-    </section>
+          <div className={styles.title}>
+            {title.map((item, index) => (
+              <div key={index}>
+                <h6>{item.title}</h6>
+                <p>{item.item}</p>
+              </div>
+            ))}
+          </div>
+          <Button title={"Edit"} />
+        </section>
+      )}
+    </>
   );
 };
 
