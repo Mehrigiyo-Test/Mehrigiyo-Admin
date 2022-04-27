@@ -10,7 +10,7 @@ const Title = ({title,subtitle}) => {
          {subtitle}
         </p>
       </div>
-      <div>
+    <div className={style.box}>
         <input type="text" placeholder="Qidirish" className={style.input}/>
         <span className={style.search}>
           <Search/>

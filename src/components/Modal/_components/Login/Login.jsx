@@ -1,7 +1,13 @@
 import { useState } from "react";
 import Button from "../../../Buttons/Button";
 import { useForm } from "react-hook-form";
-import { user, users } from "../../../../constants/user";
+import {
+  create,
+  setUser,
+  user,
+  users,
+  usersList,
+} from "../../../../constants/user";
 
 const Login = ({ open }) => {
   const [show, setShow] = useState(true);
@@ -9,28 +15,17 @@ const Login = ({ open }) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    let newUser = {
-      name: data.name,
-      surname: data.surname,
-      email: data.email,
-      number: data.number,
-      img: data.img,
-      password: data.password,
-    };
-    users.push(newUser);
-    setTab(true);
+    create(data);
+    window.location.reload(false);
   };
 
   const login = (data) => {
-    let currentUser = users.filter((u) => u.password === data.password);
+    let currentUser = usersList().filter(
+      (u) => u.email === data.email && u.password === data.password
+    );
     if (currentUser.length > 0) {
-      user.name = currentUser[0].name;
-      user.surname = currentUser[0].surname;
-      user.number = currentUser[0].number;
-      user.email = currentUser[0].email;
-      user.password = currentUser[0].password;
-      user.img = currentUser[0].img;
-      open(true);
+      setUser(currentUser[0]);
+      window.location.reload(false);
     } else {
       alert("Foydalanuvchi topilmadi!");
     }
@@ -81,14 +76,14 @@ const Login = ({ open }) => {
             onSubmit={handleSubmit(login)}
           >
             <div className="flex flex-col relative">
-              <label htmlFor="number" className="text-sm text-gray4 mb-1.5">
-                Telefon raqam
+              <label htmlFor="email" className="text-sm text-gray4 mb-1.5">
+                Email
               </label>
               <input
-                id="number"
-                type="number"
+                id="email"
+                type="email"
                 className="border-b bg-transparent outline-none pb-3 pl-12 focus:border-primaryGreen"
-                {...register("number", { required: true })}
+                {...register("email", { required: true })}
               />
               <div className="absolute bottom-4 ">
                 <img
