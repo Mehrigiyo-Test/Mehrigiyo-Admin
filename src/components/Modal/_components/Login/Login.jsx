@@ -26,6 +26,7 @@ const Login = ({ open }) => {
       alert("Foydalanuvchi topilmadi!");
     }
   };
+ 
 
   return (
     <>

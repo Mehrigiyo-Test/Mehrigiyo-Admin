@@ -45,3 +45,12 @@ export const create = (data) => {
   list.push(data);
   localStorage.setItem("users", JSON.stringify(list));
 };
+
+export const put = (data)=>{
+  let user = getUser()
+  user.name = data.name;
+  user.number = data.number;
+  user.email = data.email;
+  user.password = data.password;
+  setUser(user)
+}

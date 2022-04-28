@@ -14,9 +14,11 @@ import { ReactComponent as PaymentMethods } from "./../../../icons/Sidebar/Payme
 import { ReactComponent as Setting } from "./../../../icons/Sidebar/Setting.svg";
 import { getUser, removeUser } from "../../../constants/user";
 import Edit from "../../Modal/_components/Edit/Edit";
+import EditUpdate from "../../Modal/_components/Update/Update";
 
 const SideBar = () => {
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState("edit");
   const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
@@ -33,7 +35,10 @@ const SideBar = () => {
     removeUser();
     window.location.reload(false);
   };
-
+  const edit =()=>{
+    setOpen(!open)
+    setShow('edit')
+  }
   const pageTitle = [
     {
       icon: <ControlPanel />,
@@ -71,7 +76,7 @@ const SideBar = () => {
               </span>
             </div>
 
-            <span className={style.pen} onClick={() => setOpen(!open)}>
+            <span className={style.pen} onClick={edit}>
               <Pen />
             </span>
           </div>
@@ -91,12 +96,18 @@ const SideBar = () => {
             <span>
               <LogOut />
             </span>
-            <p className={style.log}><Link to={'/'}>Log Out</Link></p>
+            <p className={style.log}>
+              <Link to={"/"}>Log Out</Link>
+            </p>
           </div>
         </>
       )}
 
-      {open && <Modal children={<Edit />} prop={setOpen} />}
+      {open ? (
+        <div>
+          {show === 'edit' ? <Modal children={<Edit setShow={setShow}/>} prop={setOpen} /> : show === 'update' ? <Modal children={<EditUpdate setOpen={setOpen}/>} prop={setOpen} /> : null}
+        </div>
+      ) : null}
     </section>
   );
 };

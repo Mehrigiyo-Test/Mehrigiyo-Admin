@@ -20,7 +20,7 @@ function AddCard({ setOpen }) {
           <div className={styles.inputRow}>
             <input type="number" placeholder="Expires" />
             <div className={styles.inputNone}>
-              {valuee != "8600" ? (
+              {valuee !== "8600" ? (
                 <input type="number" placeholder="CVV" />
               ) : null}
             </div>

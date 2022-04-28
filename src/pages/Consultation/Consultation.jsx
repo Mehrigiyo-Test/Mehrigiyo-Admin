@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./Consultation.module.scss";
 import "../../_global.scss";
 import Title from "../../components/Title/Title";
-import { doctors } from "../../constants/doctors";
 import GlobalChangableBtns from "../../components/GlobalChangableBtns/GlobalChangableBtns";
 import img from "../../images/NoUpcoming.png";
 import doctor1 from "../../images/Doctor1.png";
@@ -13,19 +12,10 @@ import clock from "../../icons/Clock.svg";
 import missedMessage from "../../icons/MissedMessage.svg";
 import leaf from "../../images/Leafs.png";
 
-
-import Modal from "../../components/Modal/Modal";
-import EditUpdate from "./EditUpdate"
-
-
 const Consultation = () => {
 
 
-  const [open, setOpen] = useState(false);
-
-
   const data = [{}];
-  // const [click, setClick] = useState('upcoming')
   const [click, setClick] = useState(false);
   return (
     <section className={`${styles.container}`}>
@@ -126,11 +116,6 @@ const Consultation = () => {
                     <p className={styles.name}>Gavhar Sobirova</p>
                     <p className={styles.job}>Nevropatolog </p>
                   </div>
-                  {/* {doctors.filter((item) => item.name === "Gavhar")
-                  .map((item,index) => (
-
-                  ))
-                  } */}
                 </div>
                 <div className={styles.missed}>
                   <span className={styles.talkingTime}>-46:30</span>
@@ -174,7 +159,7 @@ const Consultation = () => {
                 <div className={styles.missed}>
                   <span className={styles.minute_ago}>2 minutes ago</span>
                   <span className={styles.missed_message}>
-                    <img src={missedMessage} />
+                    <img src={missedMessage} alt='' />
                   </span>
                 </div>
               </div>
@@ -232,20 +217,6 @@ const Consultation = () => {
           </div>
         </div>
       )}
-
-
-
-
-
-
-      <button onClick={()=> setOpen(true)} style={{color: "green", backgroundColor: "darkred"}}>hello</button>
-      { open &&<Modal children={<EditUpdate setOpen={setOpen} />} prop={setOpen} />}
-
-
-
-
-
-
       {/* {click === 'upcoming' ? <div>1</div> : click === 'qwe' ? <div>2</div> : null} */}
     </section>
   );

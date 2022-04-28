@@ -13,10 +13,11 @@ const DeliveryAddress = () => {
   return (
     <div className="delivery">
       <Title
-        title={"Payment methods"}
+        title={"Delivery Address"}
         subtitle={"Bugun bemorlarimizga xizmat qilish uchun ajoyib kun."}
+        edit={"Edit"}
       />
-      <span className="delivery__text">edit</span>
+    
 
       <div className="input-radio">
         <Inputradio

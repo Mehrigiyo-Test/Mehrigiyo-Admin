@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Edit.module.scss";
 import { getUser } from "../../../../constants/user";
 import Button from "../../../Buttons/Button";
-const Edit = () => {
+const Edit = ({setShow}) => {
   const [user, setUser] = useState(null);
   const [title, setTitle] = useState([]);
   useEffect(() => {
@@ -43,7 +43,9 @@ const Edit = () => {
               </div>
             ))}
           </div>
+          <div onClick={()=> setShow('update')}>
           <Button title={"Edit"} />
+          </div>
         </section>
       )}
     </>
