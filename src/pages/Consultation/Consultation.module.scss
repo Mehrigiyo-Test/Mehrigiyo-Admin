@@ -79,6 +79,7 @@
                 .littleWrapper {
                     gap: 5px;
                     display: flex;
+                    width: 125px;
 
                     .talkingData {
                         font-size: 12px;
@@ -122,6 +123,9 @@
 
         .talkingDoctor_margin {
             margin-bottom: 20px;
+        }
+        .talkingDoctor_padding{
+            padding-right: 740px !important;
         }
 
         .imgLeaf {

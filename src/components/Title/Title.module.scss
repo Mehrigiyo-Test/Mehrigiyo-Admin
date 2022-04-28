@@ -15,7 +15,8 @@
       color: $grey;
     }
   }
-  div {
+  .box {
+    position: relative;
     .input {
       border-radius: 100px;
       width: 142px;
@@ -37,9 +38,9 @@
       }
     }
     .search {
-      position: relative;
-      right: -8px;
-      top: -28px;
+      position: absolute;
+      left: 8px;
+      top: 12px;
     }
   }
 }

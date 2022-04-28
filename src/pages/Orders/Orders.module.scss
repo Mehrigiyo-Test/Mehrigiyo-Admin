@@ -1,9 +1,14 @@
 .container {
+  margin-top: 55px;
   .bigBox {
     margin-top: 30px;
+    padding-right: 658px;
+  }
+  .btnsWrapper {
+    margin-top: 25px;
   }
   .deliveryBox {
-    margin-top: 60px;
+    margin-top: 30px;
     .threeBox {
       display: flex;
       gap: 30px;
