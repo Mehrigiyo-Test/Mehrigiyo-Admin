@@ -13,7 +13,17 @@ import clock from "../../icons/Clock.svg";
 import missedMessage from "../../icons/MissedMessage.svg";
 import leaf from "../../images/Leafs.png";
 
+
+import Modal from "../../components/Modal/Modal";
+import EditUpdate from "./EditUpdate"
+
+
 const Consultation = () => {
+
+
+  const [open, setOpen] = useState(false);
+
+
   const data = [{}];
   // const [click, setClick] = useState('upcoming')
   const [click, setClick] = useState(false);
@@ -35,8 +45,12 @@ const Consultation = () => {
         <div className={styles.filledBox}>
           {click ? (
             <div>
-              <div className={`${styles.talkingDoctor} ${styles.talkingDoctor_margin}`}>
-                <div className={`${styles.avatarText} ${styles.talkingDoctor_padding}`}>
+              <div
+                className={`${styles.talkingDoctor} ${styles.talkingDoctor_margin}`}
+              >
+                <div
+                  className={`${styles.avatarText} ${styles.talkingDoctor_padding}`}
+                >
                   <div className={styles.avatar}>
                     <img src={doctor2} alt="avatar" />
                   </div>
@@ -64,8 +78,12 @@ const Consultation = () => {
                   <span className={styles.timeMessage}>12.12.2021</span>
                 </div>
               </div>
-              <div className={`${styles.talkingDoctor} ${styles.talkingDoctor_brdNone}`}>
-                <div className={`${styles.avatarText} ${styles.talkingDoctor_padding}`}>
+              <div
+                className={`${styles.talkingDoctor} ${styles.talkingDoctor_brdNone}`}
+              >
+                <div
+                  className={`${styles.avatarText} ${styles.talkingDoctor_padding}`}
+                >
                   <div className={styles.avatar}>
                     <img src={doctor3} alt="avatar" />
                   </div>
@@ -214,6 +232,20 @@ const Consultation = () => {
           </div>
         </div>
       )}
+
+
+
+
+
+
+      <button onClick={()=> setOpen(true)} style={{color: "green", backgroundColor: "darkred"}}>hello</button>
+      { open &&<Modal children={<EditUpdate setOpen={setOpen} />} prop={setOpen} />}
+
+
+
+
+
+
       {/* {click === 'upcoming' ? <div>1</div> : click === 'qwe' ? <div>2</div> : null} */}
     </section>
   );
