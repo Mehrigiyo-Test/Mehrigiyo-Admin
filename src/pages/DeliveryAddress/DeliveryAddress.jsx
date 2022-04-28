@@ -22,12 +22,14 @@ const DeliveryAddress = () => {
           subtitle={"Rasulov street, 407"}
           icon={SmallArrow}
           id={"uy"}
+
         />
         <Inputradio
           title={"Ish"}
           subtitle={"Muqimiy street, 166"}
           icon={SmallArrow}
           id={"ish"}
+
         />
       </div>
 
