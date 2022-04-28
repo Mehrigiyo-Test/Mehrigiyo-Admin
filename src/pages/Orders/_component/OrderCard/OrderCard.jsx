@@ -4,6 +4,7 @@ import { ReactComponent as Car } from "../../../../icons/Car.svg";
 import { ReactComponent as Shop } from "../../../../icons/Shop.svg";
 import Marker from "../../../../images/Marker.png";
 import { useEffect, useState } from "react";
+
 const OrderCard = ({ children, background }) => {
   const [user, setUser] = useState(null);
 

@@ -6,6 +6,9 @@ import "./DeliveryAddress.scss";
 import AddIcon from '../../icons/Add.svg';
 import HomeImg from '../../images/Home.png';
 import SmallArrow from '../../icons/SmallArrow.svg';
+import Modal from "../../components/Modal/Modal";
+import AddAddress from "../../components/Modal/_components/AddAddress/AddAddress";
+import AddCard from "../../components/Modal/_components/AddCard/AddCard";
 
 
 const DeliveryAddress = () => {
@@ -32,6 +35,8 @@ const DeliveryAddress = () => {
         <img className="home-img" src={HomeImg} alt="homeImg" />
       </div>
 
+      {/* <Modal children={<AddAddress />} prop={'true'} /> */}
+      {/* <Modal children={<AddCard />} /> */}
     </div>
   );
 };

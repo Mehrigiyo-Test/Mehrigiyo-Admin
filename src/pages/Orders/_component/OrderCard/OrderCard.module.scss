@@ -10,7 +10,7 @@
   }
   .orderRightBox {
     background-image: url("../../../../images/Map.png");
-    background-size: contain;
+    background-size: cover;
     .mapBox {
   
       padding: 7px;
@@ -70,6 +70,7 @@
         justify-content: space-between;
         padding: 9px 14px;
         background-color: #fff;
+        margin-left: 1px;
         .textLeft, .textRight{
             p{
                 font-size: 10px;
