@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./AddAddress.module.scss";
 import Button from "../../../Buttons/Button";
 
-function AddAddress() {
+function AddAddress({setOpen}) {
   return (
     <div className={styles.container}>
       <div className={styles.boxContainer}>
@@ -17,7 +17,7 @@ function AddAddress() {
           <input type="number" placeholder="Door phone (optional)"></input>
           <input type="text" placeholder="Instructions for courier (optional)"></input>
         </form>
-        <div className={styles.btnInput}>
+        <div className={styles.btnInput} onClick={()=>setOpen(false)}>
           <Button title={'Add address'} />
         </div>
       </div>

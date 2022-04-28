@@ -26,6 +26,9 @@
       .inputRow {
         display: flex;
         gap: 57px;
+        .inputNone{
+          width: 200px;
+        }
       }
     }
     .btnInput {
