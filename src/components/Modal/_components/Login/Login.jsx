@@ -1,13 +1,9 @@
 import { useState } from "react";
 import Button from "../../../Buttons/Button";
 import { useForm } from "react-hook-form";
-import {
-  create,
-  setUser,
-  user,
-  users,
-  usersList,
-} from "../../../../constants/user";
+import { ReactComponent as EyeShow } from "../../../../icons/EyeShow.svg";
+import { ReactComponent as EyeHidden } from "../../../../icons/EyeHidden.svg";
+import { create, setUser, usersList } from "../../../../constants/user";
 
 const Login = ({ open }) => {
   const [show, setShow] = useState(true);
@@ -70,45 +66,45 @@ const Login = ({ open }) => {
         </div>
 
         {tab ? (
-          <form
-            className="pt-12 px-[86px]"
-            id="login"
-            onSubmit={handleSubmit(login)}
-          >
+          <form className="pt-12 px-[86px]" onSubmit={handleSubmit(login)}>
             <div className="flex flex-col relative">
               <label htmlFor="email" className="text-sm text-gray4 mb-1.5">
                 Email
               </label>
               <input
-                id="email"
                 type="email"
-                className="border-b bg-transparent outline-none pb-3 pl-12 focus:border-primaryGreen"
+                className="border-b bg-transparent outline-none pb-3  focus:border-primaryGreen"
                 {...register("email", { required: true })}
               />
-              <div className="absolute bottom-4 ">
+              {/* <div className="absolute bottom-4 ">
                 <img
                   src="https://cdn.britannica.com/47/7247-004-44F420D7/Flag-Uzbekistan.jpg"
                   width={35}
                   style={{ borderRadius: "3px" }}
                   alt=""
                 />
-              </div>
+              </div> */}
             </div>
             <div className="flex flex-col py-6 relative">
               <label htmlFor="password" className="text-sm text-gray4 mb-1.5">
                 Parol
               </label>
               <input
-                id="password"
                 type={show ? "password" : "text"}
                 className="border-b bg-transparent pr-7 tracking-widest outline-none pb-3 focus:border-primaryGreen"
                 {...register("password", { required: true })}
               />
               <div className="absolute right-0 top-[50%] cursor-pointer">
                 {show ? (
-                  <div onClick={() => setShow(false)}>{/* <NotShow /> */}+</div>
+                  <div onClick={() => setShow(false)}>
+                    {" "}
+                    <EyeHidden />
+                  </div>
                 ) : (
-                  <div onClick={() => setShow(true)}>{/* <Show/> */}-</div>
+                  <div onClick={() => setShow(true)}>
+                    {" "}
+                    <EyeShow />
+                  </div>
                 )}
               </div>
             </div>
@@ -128,7 +124,6 @@ const Login = ({ open }) => {
             <form className="pt-12 px-[86px]" onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col pb-6">
                 <input
-                  id="text"
                   type="text"
                   placeholder="Ismingiz"
                   className="border-b bg-transparent outline-none pb-3 focus:border-primaryGreen"
@@ -137,7 +132,6 @@ const Login = ({ open }) => {
               </div>
               <div className="flex flex-col pb-6">
                 <input
-                  id="text"
                   type="text"
                   placeholder="Familiyangiz"
                   className="border-b bg-transparent outline-none pb-3 focus:border-primaryGreen"
@@ -146,7 +140,6 @@ const Login = ({ open }) => {
               </div>
               <div className="flex flex-col pb-6">
                 <input
-                  id="text"
                   type="number"
                   placeholder="Telefon raqamingiz"
                   className="border-b bg-transparent outline-none pb-3 focus:border-primaryGreen"
@@ -158,7 +151,6 @@ const Login = ({ open }) => {
                   Elektron pochta (optinal)
                 </label>
                 <input
-                  id="email"
                   type="email"
                   className="border-b bg-transparent outline-none pb-3 focus:border-primaryGreen"
                   {...register("email", { required: true })}
@@ -169,7 +161,6 @@ const Login = ({ open }) => {
                   Parolni o’ylab toping
                 </label>
                 <input
-                  id="password"
                   type={show ? "password" : "text"}
                   className="border-b bg-transparent pr-7 tracking-widest outline-none pb-3 focus:border-primaryGreen"
                   {...register("password", { required: true })}
@@ -177,10 +168,12 @@ const Login = ({ open }) => {
                 <div className="absolute right-0 top-[50%] cursor-pointer">
                   {show ? (
                     <div onClick={() => setShow(false)}>
-                      {/* <NotShow /> */}+
+                      <EyeHidden />
                     </div>
                   ) : (
-                    <div onClick={() => setShow(true)}>{/* <Show/> */}-</div>
+                    <div onClick={() => setShow(true)}>
+                      <EyeShow />
+                    </div>
                   )}
                 </div>
               </div>

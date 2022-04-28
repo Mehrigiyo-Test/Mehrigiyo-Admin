@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./SideBar.module.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Modal from "../../Modal/Modal";
 import { ReactComponent as Pen } from "./../../../icons/Sidebar/Pen.svg";
@@ -91,7 +91,7 @@ const SideBar = () => {
             <span>
               <LogOut />
             </span>
-            <p className={style.log}>Log Out</p>
+            <p className={style.log}><Link to={'/'}>Log Out</Link></p>
           </div>
         </>
       )}
