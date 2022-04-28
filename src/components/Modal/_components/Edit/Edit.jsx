@@ -12,11 +12,11 @@ const Edit = () => {
     let data = [
       {
         title: "Foydalanuvchi nomi",
-        item: users.surname + users.name,
+        item: users.surname + " " + users.name,
       },
       {
         title: "Telefon raqami",
-        item: users.number,
+        item: `+${users.number}`,
       },
       {
         title: "Elektron pochta (optinal)",

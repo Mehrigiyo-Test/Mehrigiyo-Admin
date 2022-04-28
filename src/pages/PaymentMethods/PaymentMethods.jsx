@@ -21,7 +21,7 @@ const PaymentMethods = () => {
 
       <div className="add-address">
         <img src={AddIcon} alt="add-icon" />
-        <p className="add-address__text">Manzil qo’shish</p>
+        <p className="add-address__text">Karta qo’shish</p>
       </div>
     </div>
   );
