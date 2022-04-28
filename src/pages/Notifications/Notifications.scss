@@ -1,16 +1,15 @@
 @import "../../global";
-.notificationsWrapper{
-    margin-top: 60px;
+
+.notificationsWrapper {
+  margin-top: 60px;
 }
+
 .notifications {
   display: flex;
   flex-direction: row;
   gap: 25px;
   align-items: center;
-  position: relative;
-  top: 230px;
-  left: 238px;
-  padding-right: 380px;
+  padding: 200px 238.5px;
   margin-top: -5px;
 
   &__img {
