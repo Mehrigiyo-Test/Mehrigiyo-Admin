@@ -11,20 +11,25 @@
       margin: 60px 0 40px 0;
     }
     form {
-        input {
-            outline: none;
-            padding: 16px 0;
-            width: 100%;
-            border-bottom: 1px solid #E2E2E2;
-            margin-top: 15px;
-        }
-        .inputRow {
-            display: flex;
-            gap: 57px;
-        }
+      input {
+        outline: none;
+        padding: 16px 0;
+        width: 100%;
+        border-bottom: 1px solid #e2e2e2;
+        margin-top: 15px;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .inputRow {
+        display: flex;
+        gap: 57px;
+      }
     }
     .btnInput {
-        margin: 57px 0 50px 0 !important;
+      margin: 57px 0 50px 0 !important;
     }
   }
 }

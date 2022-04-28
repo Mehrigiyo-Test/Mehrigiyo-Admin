@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
           </div>
         </div>
       ) : (
-        <Modal children={<Login open={setShow} />} prop={""} />
+        <Modal children={<Login open={setShow} />} bolean={true} />
       )}
     </>
   );

@@ -9,10 +9,10 @@ function AddCard() {
       <div className={styles.boxContainer}>
         <h5>Karta qo’shish</h5>
         <form>
-          <input type="text" placeholder="Card number" />
+          <input type="number" placeholder="Card number" />
           <div className={styles.inputRow}>
-            <input type="text" placeholder="Expires" />
-            <input type="text" placeholder="CVV" />
+            <input type="number" placeholder="Expires" />
+            <input type="number" placeholder="CVV" />
           </div>
         </form>
         <div className={styles.btnInput}>
