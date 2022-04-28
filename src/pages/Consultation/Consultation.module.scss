@@ -27,6 +27,7 @@
         align-items: center;
         gap: 15px;
         padding-right: 669px;
+
         .avatar {
           img {
             width: 50px;
@@ -96,6 +97,11 @@
           display: block;
           margin-top: 15px;
           text-align: end;
+
+          img {
+            display: unset !important;
+            vertical-align: unset !important;
+          }
         }
 
         .timeMessage {
@@ -121,6 +127,7 @@
     .talkingDoctor_margin {
       margin-bottom: 20px;
     }
+
     .talkingDoctor_padding {
       padding-right: 758px !important;
     }
