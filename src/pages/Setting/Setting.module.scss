@@ -1,0 +1,66 @@
+.container {
+    margin-top: 55px;
+
+    .settings {
+        margin-top: 40px;
+
+        .my_acc {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 50px;
+            padding: 15px 13px;
+            width: 360px;
+            border: 1px solid rgba(226, 226, 226, 0.4);
+            box-sizing: border-box;
+            filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));
+            border-radius: 13px;
+            cursor: pointer;
+
+            &__text {
+                font-size: 16px;
+                color: #181725;
+                margin-left: -20px;
+                margin-right: 120px;
+            }
+        }
+
+        &__bottom {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+
+            &__1 {
+                padding: 16px 13px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                &__title {
+                    font-size: 16px;
+                    color: #181725;
+                    margin-left: 24px;
+                }
+
+                &__group {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    margin-left: 120px;
+                    
+                }
+            }
+        }
+    }
+}
+
+.hr{
+    width: 300px;
+    margin-left: 50px;
+}
+.smalArr{
+    position: absolute;
+    right: 171px;
+}
