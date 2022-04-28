@@ -1,10 +1,9 @@
-import React from "react";
-import styles from "./Setting.module.scss";
-import Title from "../../components/Title/Title";
-import EditIcon from "../../icons/Edit.svg";
-import ModeIcon from "../../icons/Mode.svg";
-import Language from "../../icons/Language.svg";
-import SmallArrow from "../../icons/SmallArrow.svg";
+import React from 'react';
+import styles from './Setting.module.scss';
+import Title from '../../components/Title/Title';
+import ModeIcon from '../../icons/Mode.svg';
+import Language from '../../icons/Language.svg';
+import SmallArrow from '../../icons/SmallArrow.svg';
 
 const Setting = () => {
   const data = [
@@ -55,15 +54,16 @@ const Setting = () => {
             </svg>
           </span>
 
-          <p className={styles.my_acc__text}>My account</p>
           <img className={styles.my_acc__icon2} src={SmallArrow} alt="icon" />
         </div>
 
         <div className={styles.settings__bottom}>
           {data.map((item, index) => (
             <div key={index} className={styles.settings__bottom__1}>
-              <img src={item.img} alt="icon" />
-              <p className={styles.settings__bottom__1__title}>{item.title}</p>
+              <span style={{ display: 'flex', gap: '24px' }}>
+                <img src={item.img} alt="icon" />
+                <p className={styles.settings__bottom__1__title}>{item.title}</p>
+              </span>
               <span className={styles.settings__bottom__1__group}>
                 <p className={styles.settings__bottom__1__group__text}>
                   {item.subtitle}
