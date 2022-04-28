@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./SideBar.module.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -12,17 +12,28 @@ import { ReactComponent as Notification } from "./../../../icons/Sidebar/Notific
 import { ReactComponent as Orders } from "./../../../icons/Sidebar/Orders.svg";
 import { ReactComponent as PaymentMethods } from "./../../../icons/Sidebar/PaymentMethods.svg";
 import { ReactComponent as Setting } from "./../../../icons/Sidebar/Setting.svg";
-import { user } from "../../../constants/user";
+import { getUser, removeUser } from "../../../constants/user";
 import Edit from "../../Modal/_components/Edit/Edit";
-import Login from "../../Modal/_components/Login/Login";
 
 const SideBar = () => {
   const [open, setOpen] = useState(false);
-  const [show, setShow] = useState(false);
+  const [user, setUser] = useState(null);
+
   const navigate = useNavigate();
   const onPushPath = (href) => {
     navigate({ pathname: `/admin${href}` });
   };
+
+  useEffect(() => {
+    let users = getUser();
+    setUser(users);
+  }, []);
+
+  const logout = () => {
+    removeUser();
+    window.location.reload(false);
+  };
+
   const pageTitle = [
     {
       icon: <ControlPanel />,
@@ -46,44 +57,46 @@ const SideBar = () => {
   ];
   return (
     <section className={style.container}>
-      <div className={style.user}>
-        <div>
-          <span className={style.avatar}>
-            <img src={user.img} alt="user" />
-          </span>
-          <span>
-            <h4 className={style.h4}>{user.surname}</h4>
-            <h4 className={style.h4}>{user.name}</h4>
-            <p className={style.p}>+{user.number}</p>
-          </span>
-        </div>
+      {user != null && (
+        <>
+          <div className={style.user}>
+            <div>
+              <span className={style.avatar}>
+                <img src={user.img} alt="user" />
+              </span>
+              <span>
+                <h4 className={style.h4}>{user.surname}</h4>
+                <h4 className={style.h4}>{user.name}</h4>
+                <p className={style.p}>+{user.number}</p>
+              </span>
+            </div>
 
-        <span className={style.pen} onClick={() => setOpen(!open)}>
-          <Pen />
-        </span>
-      </div>
-      <div className={style.wrapper}>
-        {pageTitle.map((item, index) => (
-          <div
-            className={style.pageTitle}
-            key={index}
-            onClick={() => onPushPath(item.href)}
-          >
-            <span className={style.flex}>{item.icon}</span>
-            <h3 className={style.h3}>{item.text}</h3>
+            <span className={style.pen} onClick={() => setOpen(!open)}>
+              <Pen />
+            </span>
           </div>
-        ))}
-      </div>
-      <div className={style.logout}>
-        <span>
-          <LogOut />
-        </span>
-        <p className={style.log}>Log Out</p>
-      </div>
+          <div className={style.wrapper}>
+            {pageTitle.map((item, index) => (
+              <div
+                className={style.pageTitle}
+                key={index}
+                onClick={() => onPushPath(item.href)}
+              >
+                <span className={style.flex}>{item.icon}</span>
+                <h3 className={style.h3}>{item.text}</h3>
+              </div>
+            ))}
+          </div>
+          <div className={style.logout} onClick={logout}>
+            <span>
+              <LogOut />
+            </span>
+            <p className={style.log}>Log Out</p>
+          </div>
+        </>
+      )}
 
       {open && <Modal children={<Edit />} prop={setOpen} />}
-
-      {/* {!show && <Modal children={<Login open={setShow} />} prop={""} />} */}
     </section>
   );
 };
