@@ -1,17 +1,11 @@
 import styles from "./OrderCard.module.scss";
-import { getUser } from "../../../../constants/user";
+import Marker from "../../../../images/Marker.png";
+
+import { user } from "../../../../constants/user";
 import { ReactComponent as Car } from "../../../../icons/Car.svg";
 import { ReactComponent as Shop } from "../../../../icons/Shop.svg";
-import Marker from "../../../../images/Marker.png";
-import { useEffect, useState } from "react";
 
 const OrderCard = ({ children, background }) => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    let users = getUser();
-    setUser(users);
-  }, []);
   return (
     <>
       {user != null && (

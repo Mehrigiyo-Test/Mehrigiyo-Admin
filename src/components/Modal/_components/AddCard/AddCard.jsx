@@ -1,27 +1,27 @@
 import styles from "./AddCard.module.scss";
 import Button from "../../../Buttons/Button";
-
 import React, { useState } from "react";
-
+import { MaskedInput } from "antd-mask-input";
 function AddCard({ setOpen }) {
   const [value, setValue] = useState("");
   let valuee = value.slice(0, 4);
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.boxContainer}>
         <h5>Karta qo’shish</h5>
         <form>
-          <input
-            type="number"
+          <MaskedInput
+            mask={"0000 0000 0000 0000"}
             placeholder="Card number"
             onChange={(e) => setValue(e.target.value)}
           />
+
           <div className={styles.inputRow}>
-            <input type="number" placeholder="Expires" />
+            <MaskedInput placeholder="Expires" mask={"00/00"} />
             <div className={styles.inputNone}>
               {valuee !== "8600" ? (
-                <input type="number" placeholder="CVV" />
+                <MaskedInput placeholder="CVV" mask={"000"} />
               ) : null}
             </div>
           </div>

@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import style from "./../Header.module.scss";
-
 import { ReactComponent as UzbFlag } from "./../../../../icons/Header/UzbFlag.svg";
 import { ReactComponent as Arrow } from "./../../../../icons/Header/Arrow.svg";
 import { ReactComponent as Location } from "./../../../../icons/Header/Location.svg";
-import { getUser } from "../../../../constants/user";
+import { user } from "../../../../constants/user";
 const TopHeader = () => {
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    let users = getUser();
-    setUser(users);
-  }, []);
-
   const titles = [
     { text: `Mahsulotlar katalogi`, link: `#` },
     { text: `Foto-lavhalar`, link: `#` },

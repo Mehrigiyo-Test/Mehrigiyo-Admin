@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import styles from "./Consultation.module.scss";
-import "../../_global.scss";
+
 import Title from "../../components/Title/Title";
 import GlobalChangableBtns from "../../components/GlobalChangableBtns/GlobalChangableBtns";
+
 import img from "../../images/NoUpcoming.png";
+import leaf from "../../images/Leafs.png";
 import doctor1 from "../../images/Doctor1.png";
 import doctor2 from "../../images/Doctor2.png";
 import doctor3 from "../../images/Doctor3.png";
 import doctor4 from "../../images/Doctor4.png";
-import clock from "../../icons/Clock.svg";
 import missedMessage from "../../icons/MissedMessage.svg";
-import leaf from "../../images/Leafs.png";
+import clock from "../../icons/Clock.svg";
 
 const Consultation = () => {
-
-
   const data = [{}];
   const [click, setClick] = useState(false);
   return (
@@ -159,7 +158,7 @@ const Consultation = () => {
                 <div className={styles.missed}>
                   <span className={styles.minute_ago}>2 minutes ago</span>
                   <span className={styles.missed_message}>
-                    <img src={missedMessage} alt='' />
+                    <img src={missedMessage} alt="" />
                   </span>
                 </div>
               </div>

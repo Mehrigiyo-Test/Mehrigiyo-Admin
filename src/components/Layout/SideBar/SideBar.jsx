@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
-import style from "./SideBar.module.scss";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import style from "./SideBar.module.scss";
 
 import Modal from "../../Modal/Modal";
+import Edit from "../../Modal/_components/Edit/Edit";
+import EditUpdate from "../../Modal/_components/Update/Update";
+
+import { user } from "../../../constants/user";
 import { ReactComponent as Pen } from "./../../../icons/Sidebar/Pen.svg";
 import { ReactComponent as ControlPanel } from "./../../../icons/Sidebar/ControlPanel.svg";
 import { ReactComponent as Consultation } from "./../../../icons/Sidebar/Consultation.svg";
@@ -12,33 +16,21 @@ import { ReactComponent as Notification } from "./../../../icons/Sidebar/Notific
 import { ReactComponent as Orders } from "./../../../icons/Sidebar/Orders.svg";
 import { ReactComponent as PaymentMethods } from "./../../../icons/Sidebar/PaymentMethods.svg";
 import { ReactComponent as Setting } from "./../../../icons/Sidebar/Setting.svg";
-import { getUser, removeUser } from "../../../constants/user";
-import Edit from "../../Modal/_components/Edit/Edit";
-import EditUpdate from "../../Modal/_components/Update/Update";
 
 const SideBar = () => {
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState("edit");
-  const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
   const onPushPath = (href) => {
     navigate({ pathname: `/admin${href}` });
   };
 
-  useEffect(() => {
-    let users = getUser();
-    setUser(users);
-  }, []);
-
-  const logout = () => {
-    removeUser();
-    window.location.reload(false);
+  const edit = () => {
+    setOpen(true);
+    setShow("edit");
   };
-  const edit =()=>{
-    setOpen(!open)
-    setShow('edit')
-  }
+
   const pageTitle = [
     {
       icon: <ControlPanel />,
@@ -60,6 +52,7 @@ const SideBar = () => {
     { icon: <Notification />, text: `Notifications`, href: `/notifications` },
     { icon: <Setting />, text: `Setting`, href: `/setting` },
   ];
+
   return (
     <section className={style.container}>
       {user != null && (
@@ -75,7 +68,6 @@ const SideBar = () => {
                 <p className={style.p}>+{user.number}</p>
               </span>
             </div>
-
             <span className={style.pen} onClick={edit}>
               <Pen />
             </span>
@@ -92,7 +84,7 @@ const SideBar = () => {
               </div>
             ))}
           </div>
-          <div className={style.logout} onClick={logout}>
+          <div className={style.logout}>
             <span>
               <LogOut />
             </span>
@@ -105,7 +97,11 @@ const SideBar = () => {
 
       {open ? (
         <div>
-          {show === 'edit' ? <Modal children={<Edit setShow={setShow}/>} prop={setOpen} /> : show === 'update' ? <Modal children={<EditUpdate setOpen={setOpen}/>} prop={setOpen} /> : null}
+          {show === "edit" ? (
+            <Modal children={<Edit setShow={setShow} />} prop={setOpen} />
+          ) : show === "update" ? (
+            <Modal children={<EditUpdate setOpen={setOpen} />} prop={setOpen} />
+          ) : null}
         </div>
       ) : null}
     </section>

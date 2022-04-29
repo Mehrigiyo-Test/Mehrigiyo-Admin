@@ -1,32 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Update.module.scss";
 import Button from "../../../Buttons/Button";
-import { getUser, put } from "../../../../constants/user";
+
+import { user } from "../../../../constants/user";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { ReactComponent as EyeShow } from "../../../../icons/EyeShow.svg";
+import { ReactComponent as EyeHidden } from "../../../../icons/EyeHidden.svg";
+
 const EditUpdate = ({ setOpen }) => {
   const [show, setShow] = useState(false);
-  const [user, setUser] = useState(null);
   const { register, handleSubmit } = useForm();
-  const navigation = useNavigate();
-  
-  useEffect(() => {
-    let users = getUser();
-    setUser(users);
-  }, []);
 
   const onSubmit = (data) => {
-    put(data);
-    navigation("/");
-    window.location.reload(false);
+    console.log(data);
   };
+  
   return (
     <>
       {user != null && (
         <div className={styles.EditUpdate}>
           <div className={styles.Account}>
             <p className={styles.Account_title}>My account</p>
-            <div className={styles.Account_avatar}></div>
+            <div className={styles.Account_avatar}>
+              <img src={user.img} alt="" style={{ width: "100%" }} />
+            </div>
             <p className={styles.Account_text}>Fotosurat yuklang (optinal)</p>
           </div>
           <form className={styles.form} onSubmit={handleSubmit()}>
@@ -40,7 +37,7 @@ const EditUpdate = ({ setOpen }) => {
             <div className={styles.form_inputFirst}>
               <p>Telefon raqami</p>
               <input
-                type="number"
+                // type="number"
                 {...register("number", { required: true, value: user.number })}
               />
             </div>
@@ -63,9 +60,13 @@ const EditUpdate = ({ setOpen }) => {
                 })}
               />
               {show ? (
-                <span onClick={() => setShow(false)}>+</span>
+                <span onClick={() => setShow(false)}>
+                  <EyeShow />
+                </span>
               ) : (
-                <span onClick={() => setShow(true)}>-</span>
+                <span onClick={() => setShow(true)}>
+                  <EyeHidden />
+                </span>
               )}
             </div>
             <div className={styles.form_btn} onClick={handleSubmit(onSubmit)}>
