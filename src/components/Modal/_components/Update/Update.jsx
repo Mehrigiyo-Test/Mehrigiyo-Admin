@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Update.module.scss";
 import Button from "../../../Buttons/Button";
 
-import { user } from "../../../../constants/user";
 import { useForm } from "react-hook-form";
 import { ReactComponent as EyeShow } from "../../../../icons/EyeShow.svg";
 import { ReactComponent as EyeHidden } from "../../../../icons/EyeHidden.svg";
+import { getCurrentUser} from "../../../../services/auth-service";
+import { putUserMe } from "../../../../services/user-service";
+
 
 const EditUpdate = ({ setOpen }) => {
   const [show, setShow] = useState(false);
+  const [user,setUser]= useState(null)
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    putUserMe(data)
+    setShow(true)
+    window.location.reload(false)
   };
+
+  useEffect(()=>{
+    setUser(getCurrentUser())
+  },[])
   
   return (
     <>
@@ -22,7 +31,7 @@ const EditUpdate = ({ setOpen }) => {
           <div className={styles.Account}>
             <p className={styles.Account_title}>My account</p>
             <div className={styles.Account_avatar}>
-              <img src={user.img} alt="" style={{ width: "100%" }} />
+              <img src={user.avatar} alt="" style={{ width: "100%" }} />
             </div>
             <p className={styles.Account_text}>Fotosurat yuklang (optinal)</p>
           </div>
@@ -31,14 +40,14 @@ const EditUpdate = ({ setOpen }) => {
               <p>Foydalanuvchi nomi</p>
               <input
                 type="text"
-                {...register("name", { required: true, value: user.name })}
+                {...register("first_name", { required: true, value: user.first_name })}
               />
             </div>
             <div className={styles.form_inputFirst}>
               <p>Telefon raqami</p>
               <input
                 // type="number"
-                {...register("number", { required: true, value: user.number })}
+                {...register("username", { required: true, value: user.username })}
               />
             </div>
             <div className={styles.form_inputFirst}>
@@ -54,10 +63,10 @@ const EditUpdate = ({ setOpen }) => {
               <p>Parolni o’ylab toping</p>
               <input
                 type={show ? "text" : "password"}
-                {...register("password", {
-                  required: true,
-                  value: user.password,
-                })}
+                // {...register("password", {
+                //   required: true,
+                //   value: user.password,
+                // })}
               />
               {show ? (
                 <span onClick={() => setShow(false)}>

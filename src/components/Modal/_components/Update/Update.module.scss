@@ -55,12 +55,13 @@
       input {
         width: 100%;
         outline: none;
+        border: none;
         border-bottom: 1px solid #e2e2e2;
         padding-bottom: 13px;
-
-        &:focus {
-          border-bottom: 1px solid $green;
+        &:focus{
+          border-color: $green;
         }
+  
       }
 
       input::-webkit-outer-spin-button,

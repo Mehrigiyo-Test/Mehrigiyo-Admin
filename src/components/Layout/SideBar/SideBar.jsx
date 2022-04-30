@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./SideBar.module.scss";
 
@@ -6,7 +6,6 @@ import Modal from "../../Modal/Modal";
 import Edit from "../../Modal/_components/Edit/Edit";
 import EditUpdate from "../../Modal/_components/Update/Update";
 
-import { user } from "../../../constants/user";
 import { ReactComponent as Pen } from "./../../../icons/Sidebar/Pen.svg";
 import { ReactComponent as ControlPanel } from "./../../../icons/Sidebar/ControlPanel.svg";
 import { ReactComponent as Consultation } from "./../../../icons/Sidebar/Consultation.svg";
@@ -16,10 +15,12 @@ import { ReactComponent as Notification } from "./../../../icons/Sidebar/Notific
 import { ReactComponent as Orders } from "./../../../icons/Sidebar/Orders.svg";
 import { ReactComponent as PaymentMethods } from "./../../../icons/Sidebar/PaymentMethods.svg";
 import { ReactComponent as Setting } from "./../../../icons/Sidebar/Setting.svg";
+import { getCurrentUser, logout } from "../../../services/auth-service";
 
 const SideBar = () => {
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState("edit");
+  const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
   const onPushPath = (href) => {
@@ -30,6 +31,17 @@ const SideBar = () => {
     setOpen(true);
     setShow("edit");
   };
+
+  const logoutUser = () => {
+    logout();
+    navigate("/");
+    window.location.reload(false);
+  };
+
+  useEffect(() => {
+    let user = getCurrentUser();
+    setUser(user);
+  }, []);
 
   const pageTitle = [
     {
@@ -60,12 +72,18 @@ const SideBar = () => {
           <div className={style.user}>
             <div>
               <span className={style.avatar}>
-                <img src={user.img} alt="user" />
+                {user.avatar != null ? (
+                  <img src={user.avatar} alt="user" />
+                ) : (
+                  <span className={style.userWithoutAvatar}>
+                    {user.first_name[0] + user.last_name[0]}
+                  </span>
+                )}
               </span>
               <span>
-                <h4 className={style.h4}>{user.surname}</h4>
-                <h4 className={style.h4}>{user.name}</h4>
-                <p className={style.p}>+{user.number}</p>
+                <h4 className={style.h4}>{user.first_name}</h4>
+                <h4 className={style.h4}>{user.last_name}</h4>
+                <p className={style.p}>+{user.username}</p>
               </span>
             </div>
             <span className={style.pen} onClick={edit}>
@@ -84,7 +102,7 @@ const SideBar = () => {
               </div>
             ))}
           </div>
-          <div className={style.logout}>
+          <div className={style.logout} onClick={logoutUser}>
             <span>
               <LogOut />
             </span>

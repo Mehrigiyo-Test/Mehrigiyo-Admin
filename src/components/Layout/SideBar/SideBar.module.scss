@@ -24,6 +24,16 @@
           width: 100%;
         }
       }
+      .userWithoutAvatar {
+        color: white;
+        font-size: 15px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 5px;
+      }
       span {
         .h4 {
           line-height: 20px;
@@ -36,10 +46,10 @@
       }
     }
     .pen {
-      padding: 5px 5px;
+      padding: 3px 5px;
       cursor: pointer;
       border-radius: 50%;
-      height: 23px;
+      height: 25px;
       transition: 0.5s;
       &:hover {
         box-shadow: 0 1px 3px 0px rgba(76, 76, 76, 0.702);

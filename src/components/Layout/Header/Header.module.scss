@@ -43,8 +43,18 @@
       height: 25px;
       overflow: hidden;
       img {
-      width: 100%;
+        width: 100%;
       }
+    }
+    .userWithoutAvatar {
+      color: white;
+      font-size: 10px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 5px;
     }
   }
 }

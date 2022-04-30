@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Dropdown.module.scss";
-const Dropdown = ({ title, dropdownItems }) => {
+const Dropdown = ({ title, dropdownItems}) => {
   const [open, setOpen] = useState(false);
   return (
     <div >
@@ -9,13 +9,15 @@ const Dropdown = ({ title, dropdownItems }) => {
         <div className={styles.drop}>
           <section className={styles.container} onMouseLeave={()=> setOpen(false)}>
             {dropdownItems.map((item, index) => (
-              <div
+             <a href={item.path}>
+                <div
                 key={index}
                 className={styles.dropdown}
                 onClick={()=> setOpen(false)}
               >
                 <p>{item.label}</p>
               </div>
+             </a>
             ))}
           </section>
         </div>

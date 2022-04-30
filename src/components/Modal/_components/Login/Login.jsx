@@ -1,0 +1,203 @@
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+
+import { ReactComponent as NoAvatar } from "../../../../icons/NoAvatar.svg";
+import { ReactComponent as Optinal } from "../../../../icons/Optinal.svg";
+import { ReactComponent as EyeHidden } from "../../../../icons/EyeHidden.svg";
+import { ReactComponent as EyeShow } from "../../../../icons/EyeShow.svg";
+import Button from "../../../Buttons/Button";
+
+import { setCurrentUser, setToken } from "../../../../services/auth-service";
+import requestApi from "../../../../services/api/request";
+const Login = () => {
+  const [show, setShow] = useState(true);
+  const [tab, setTab] = useState(true);
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+
+  const onSubmit = (data) => {
+    requestApi.post("/login/", data).then((response) => {
+      console.log(response);
+      if (response.status === 200) {
+        setToken(response.data.access);
+
+        requestApi.get("/user/me/").then((response) => {
+          if (response.status === 200) {
+            let user = response.data.data;
+            setCurrentUser(user);
+            navigate("/");
+            window.location.reload(false);
+          }
+        });
+      }
+    });
+  };
+
+  return (
+
+    <section>
+      <div className="pt-[70px] px-25">
+        <div className="bg-[#F8F8F8] flex p-[5px] gap-[30px] rounded-[100px] items-center mx-[60px]">
+          <span
+            className={
+              tab
+                ? "text-[#53B175] font-semibold relative z-20 px-12 py-1 "
+                : "text-[#B0B7C3] cursor-pointer relative z-20  px-[53px]"
+            }
+            onClick={() => setTab(true)}
+          >
+            Kirish
+          </span>
+          <span
+            className={
+              "bg-white absolute h-8 rounded-[100px] shadow-lg z-10 duration-500 w-32"
+            }
+            style={
+              tab
+                ? { transform: "translateX(0)", width: "140px" }
+                : { transform: "translateX(145px)", width: "190px" }
+            }
+          ></span>
+          <span
+            className={
+              tab
+                ? "text-[#B0B7C3] px-7.5 pr-[20px] cursor-pointer relative z-20  "
+                : "text-[#53B175] font-semibold  rounded-[100px] px-7.5  py-1 relative z-20"
+            }
+            onClick={() => setTab(false)}
+          >
+            Ro'yxatdan o'tish
+          </span>
+        </div>
+      </div>
+
+      {tab ? (
+        <form action="" className="pt-12 px-[86px]" onSubmit={handleSubmit}>
+          <div className="flex flex-col relative">
+            <label htmlFor="number" className="text-sm text-gray4 mb-1.5">
+              Telefon raqam
+            </label>
+            <input
+              id="number"
+              type="number"
+              className="border-b bg-transparent outline-none pb-3  focus:border-[#53B175]"
+              {...register("username")}
+            />
+         
+          </div>
+          <div className="flex flex-col py-6 relative">
+            <label htmlFor="password" className="text-sm text-gray4 mb-1.5">
+              Parol
+            </label>
+            <input
+              id="password"
+              type={show ? "password" : "text"}
+              className="border-b bg-transparent pr-7 tracking-widest outline-none pb-3 focus:border-[#53B175]"
+              {...register("password")} 
+            />
+            <div className="absolute right-0 top-[50%] cursor-pointer">
+              {show ? (
+                <div onClick={() => setShow(false)}>
+                  <EyeHidden />
+                </div>
+              ) : (
+                <div onClick={() => setShow(true)}>
+                  <EyeShow />
+                </div>
+              )}
+            </div>
+          </div>
+          <p className="text-xs text-gray4 text-right cursor-pointer">
+            Parolni unutdingizmi?
+          </p>
+          <div className="py-12" onClick={handleSubmit(onSubmit)}>
+            <Button title={"Tizimga kirish"} />
+          </div>
+        </form>
+      ) : (
+        <section>
+          <div className="pt-10 flex flex-col items-center">
+            <div className="bg-[#EBEBEB] relative rounded-full w-[84px] h-[84px] flex justify-center items-center">
+              <NoAvatar />
+              <span className="absolute bottom-0 right-0 cursor-pointer">
+                <Optinal />
+              </span>
+            </div>
+            <p className="text-xs pt-4">Fotosurat yuklang (optinal)</p>
+          </div>
+          <form action="" className="pt-12 px-[86px]">
+            <div className="flex flex-col pb-6">
+              <input
+                id="text"
+                type="text"
+                placeholder="Ismingiz"
+                className="border-b bg-transparent outline-none pb-3 focus:border-primaryGreen"
+              />
+            </div>
+            <div className="flex flex-col pb-6">
+              <input
+                id="text"
+                type="text"
+                placeholder="Familiyangiz"
+                className="border-b bg-transparent outline-none pb-3 focus:border-primaryGreen"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="email" className="text-sm text-gray4 mb-1.5">
+                Elektron pochta (optinal)
+              </label>
+              <input
+                id="email"
+                type="email"
+                className="border-b bg-transparent outline-none pb-3 focus:border-primaryGreen"
+              />
+            </div>
+            <div className="flex flex-col pt-5">
+              <label htmlFor="email" className="text-sm text-gray4 mb-1.5">
+                Telefon raqamingiz
+              </label>
+              <input
+                id="number"
+                type="number"
+                className="border-b bg-transparent outline-none pb-3 focus:border-primaryGreen"
+              />
+            </div>
+            <div className="flex flex-col py-6 relative">
+              <label htmlFor="password" className="text-sm text-gray4 mb-1.5">
+                Parolni o’ylab toping
+              </label>
+              <input
+                id="password"
+                type={show ? "password" : "text"}
+                className="border-b bg-transparent pr-7 tracking-widest outline-none pb-3 focus:border-primaryGreen"
+              />
+              <div className="absolute right-0 top-[50%] cursor-pointer">
+                {show ? (
+                  <div onClick={() => setShow(false)}>
+                    <EyeHidden />
+                  </div>
+                ) : (
+                  <div onClick={() => setShow(true)}>
+                    <EyeShow />
+                  </div>
+                )}
+              </div>
+            </div>
+            <p className="text-xs text-gray3 text-center">
+              “Ro’yxatdan o’tish” tugmasini bosgan holda, Siz <br />
+              <span className="text-[#53B175]">
+                Foydalanish shartlarini qabul qilgan xisoblanasiz.
+              </span>
+            </p>
+            <div className="pb-12 pt-5" >
+              <Button title={"Ro’yxatdan o’tish"} />
+            </div>
+          </form>
+        </section>
+      )}
+    </section>
+  );
+};
+
+export default Login;

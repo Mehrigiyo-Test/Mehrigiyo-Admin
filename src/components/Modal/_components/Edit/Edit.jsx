@@ -1,40 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Edit.module.scss";
 import Button from "../../../Buttons/Button";
-
-import { user } from "../../../../constants/user";
+import { getCurrentUser } from "../../../../services/auth-service";
 
 const Edit = ({ setShow }) => {
-  const arr = [
-    {
-      title: "Foydalanuvchi nomi",
-      item: user.surname + " " + user.name,
-    },
-    {
-      title: "Telefon raqami",
-      item: `+${user.number}`,
-    },
-    {
-      title: "Elektron pochta (optinal)",
-      item: user.email,
-    },
-  ];
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    setUser(getCurrentUser());
+  }, []);
+
+  // const arr = [
+  //   {
+  //     title: "Foydalanuvchi nomi",
+  //     item: `${user.first_name} ${user.last_name}`,
+  //   },
+  //   {
+  //     title: "Telefon raqami",
+  //     item: `+${user.username}`,
+  //   },
+  //   {
+  //     title: "Elektron pochta (optinal)",
+  //     item: user.email,
+  //   },
+  // ];
 
   return (
     <>
-      {user != null && (
+      {user !== null && (
         <section className={styles.container}>
           <h4>My account</h4>
           <div className={styles.img}>
-            <img src={user.img} alt="" />
+            {user.avatar != null ? (
+              <img src={user.avatar} alt="user" />
+            ) : (
+              <span className={styles.userWithoutAvatar}>
+                {user.first_name[0] + user.last_name[0]}
+              </span>
+            )}
           </div>
           <div className={styles.title}>
-            {arr.map((item, index) => (
-              <div key={index}>
-                <h6>{item.title}</h6>
-                <p>{item.item}</p>
+            <>
+              <div>
+                <h6>"Foydalanuvchi nomi"</h6>
+                <p>{`${user.first_name} ${user.last_name}`}</p>
               </div>
-            ))}
+              <div>
+                <h6>"Telefon raqami"</h6>
+                <p>{user.username} </p>
+              </div>
+              <div>
+                <h6>"Elektron pochta (optinal)"</h6>
+                <p>{user.email}</p>
+              </div>
+            </>
           </div>
           <div onClick={() => setShow("update")}>
             <Button title={"Edit"} />

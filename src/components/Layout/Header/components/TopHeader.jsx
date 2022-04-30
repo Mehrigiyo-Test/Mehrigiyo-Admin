@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./../Header.module.scss";
 import { ReactComponent as UzbFlag } from "./../../../../icons/Header/UzbFlag.svg";
 import { ReactComponent as Arrow } from "./../../../../icons/Header/Arrow.svg";
 import { ReactComponent as Location } from "./../../../../icons/Header/Location.svg";
-import { user } from "../../../../constants/user";
+import { getCurrentUser } from "../../../../services/auth-service";
+
 const TopHeader = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    setUser(getCurrentUser());
+  }, []);
+
   const titles = [
     { text: `Mahsulotlar katalogi`, link: `#` },
     { text: `Foto-lavhalar`, link: `#` },
@@ -13,7 +20,6 @@ const TopHeader = () => {
     { text: `Aksiya`, link: `#`, color: `#AB7A19` },
     { text: `Yangi`, link: `#`, color: `#53B175` },
   ];
-
   return (
     <>
       {user != null && (
@@ -45,11 +51,17 @@ const TopHeader = () => {
             </div>
             <div className={style.user}>
               <span className={style.userAvatar}>
-                <img src={user.img} alt="user" />
+                {user.avatar != null ? (
+                  <img src={user.avatar} alt="user" />
+                ) : (
+                  <span className={style.userWithoutAvatar}>
+                    {user.first_name[0] + user.last_name[0]}
+                  </span>
+                )}
               </span>
               <div style={{ display: "flex" }}>
-                <p>{user.surname[0]}.</p>
-                <p>{user.name}</p>
+                <p>{user.first_name[0]}.</p>
+                <p>{user.last_name}</p>
               </div>
             </div>
           </div>

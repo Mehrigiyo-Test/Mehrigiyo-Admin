@@ -12,15 +12,15 @@ import {
   news,
   helps,
 } from "./../../../../constants/header";
-import { Link } from "react-router-dom";
 import Dropdown from "../../../Dropdown/Dropdown";
+import {port} from '../../../../constants/port'
 
 const BottomHeader = () => {
   const navElements = [
-    { title: `Bosh sahifa` },
+    { title: `Bosh sahifa` , link: `http://localhost:${port}/` },
     { title: `Onlayn shifokorlar`, dropdownItems: onlineDoctors },
     { title: `Mahsulotlar`, dropdownItems: products },
-    { title: `Biz haqimizda` },
+    { title: `Biz haqimizda`,link: `http://localhost:${port}/aboutUs` },
     { title: `Yangiliklar`, dropdownItems: news },
     { title: `Yordam`, dropdownItems: helps },
   ];
@@ -46,7 +46,9 @@ const BottomHeader = () => {
                 />
               </div>
             ) : (
-              <div key={index}>{item.title}</div>
+              <div key={index}>
+                <a href={item.link}>{item.title}</a>
+              </div>
             )
           )}
         </div>
@@ -54,7 +56,7 @@ const BottomHeader = () => {
       <div className={style.actions}>
         {actions.map((item, index) => (
           <div key={index}>
-            <Link to={item.path}>{item.icon}</Link>
+            <a href={item.path}>{item.icon}</a>
           </div>
         ))}
       </div>
