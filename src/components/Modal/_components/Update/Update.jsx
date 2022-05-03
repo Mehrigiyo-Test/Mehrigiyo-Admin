@@ -3,27 +3,30 @@ import styles from "./Update.module.scss";
 import Button from "../../../Buttons/Button";
 
 import { useForm } from "react-hook-form";
+
+import { ReactComponent as NoAvatar } from "../../../../icons/NoAvatar.svg";
+import { ReactComponent as Optinal } from "../../../../icons/Optinal.svg";
 import { ReactComponent as EyeShow } from "../../../../icons/EyeShow.svg";
 import { ReactComponent as EyeHidden } from "../../../../icons/EyeHidden.svg";
-import { getCurrentUser} from "../../../../services/auth-service";
+import { getCurrentUser } from "../../../../services/auth-service";
 import { putUserMe } from "../../../../services/user-service";
-
 
 const EditUpdate = ({ setOpen }) => {
   const [show, setShow] = useState(false);
-  const [user,setUser]= useState(null)
+  const [user, setUser] = useState(null);
+
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    putUserMe(data)
-    setShow(true)
-    window.location.reload(false)
+    putUserMe(data);
+    setShow(true);
+    window.location.reload(false);
   };
 
-  useEffect(()=>{
-    setUser(getCurrentUser())
-  },[])
-  
+  useEffect(() => {
+    setUser(getCurrentUser());
+  }, []);
+
   return (
     <>
       {user != null && (
@@ -31,23 +34,35 @@ const EditUpdate = ({ setOpen }) => {
           <div className={styles.Account}>
             <p className={styles.Account_title}>My account</p>
             <div className={styles.Account_avatar}>
-              <img src={user.avatar} alt="" style={{ width: "100%" }} />
+              <div className="bg-[#EBEBEB] rounded-full w-[84px] h-[84px] flex justify-center items-center">
+                <NoAvatar />
+                <span className="absolute bottom-0 right-0 cursor-pointer">
+                  <Optinal />
+                </span>
+              </div>
             </div>
-            <p className={styles.Account_text}>Fotosurat yuklang (optinal)</p>
+              <p className="text-xs pt-4">Fotosurat yuklang (optinal)</p>
+          
           </div>
           <form className={styles.form} onSubmit={handleSubmit()}>
-            <div className={styles.form_inputFirst}>
+            <div className={styles.form_inputFirst} >
               <p>Foydalanuvchi nomi</p>
               <input
                 type="text"
-                {...register("first_name", { required: true, value: user.first_name })}
+                {...register("first_name", {
+                  required: true,
+                  value: user.first_name,
+                })}
               />
             </div>
             <div className={styles.form_inputFirst}>
               <p>Telefon raqami</p>
               <input
-                // type="number"
-                {...register("username", { required: true, value: user.username })}
+                type="number"
+                {...register("username", {
+                  required: true,
+                  value: user.username,
+                })}
               />
             </div>
             <div className={styles.form_inputFirst}>

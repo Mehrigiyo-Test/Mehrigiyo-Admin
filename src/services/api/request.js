@@ -8,6 +8,10 @@ requestApi.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
   console.log("interceptor is working");
+  
+  if (config.url.includes("/user/registration/")) {
+    return config;
+  }
 
   if (config.headers !== undefined) {
     config.headers["Authorization"] = `Bearer ${token}`;

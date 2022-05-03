@@ -42,15 +42,15 @@ const Edit = ({ setShow }) => {
           <div className={styles.title}>
             <>
               <div>
-                <h6>"Foydalanuvchi nomi"</h6>
+                <h6>Foydalanuvchi nomi</h6>
                 <p>{`${user.first_name} ${user.last_name}`}</p>
               </div>
               <div>
-                <h6>"Telefon raqami"</h6>
+                <h6>Telefon raqami</h6>
                 <p>{user.username} </p>
               </div>
               <div>
-                <h6>"Elektron pochta (optinal)"</h6>
+                <h6>Elektron pochta (optinal)</h6>
                 <p>{user.email}</p>
               </div>
             </>

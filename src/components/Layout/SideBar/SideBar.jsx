@@ -49,20 +49,20 @@ const SideBar = () => {
       text: `Boshqaruv paneli`,
       href: `/control-panel`,
     },
-    { icon: <Consultation />, text: `Consultation`, href: `/consultation` },
-    { icon: <Orders />, text: `Orders`, href: `/orders` },
+    { icon: <Consultation />, text: `Konsultatsiya`, href: `/consultation` },
+    { icon: <Orders />, text: `Buyurtmalar`, href: `/orders` },
     {
       icon: <DeliveryAddress />,
-      text: `DeliveryAddress`,
+      text: `Yetkazish manzili`,
       href: `/delivery-address`,
     },
     {
       icon: <PaymentMethods />,
-      text: `PaymentMethods `,
+      text: `To'lov usullari`,
       href: `/payment-methods`,
     },
-    { icon: <Notification />, text: `Notifications`, href: `/notifications` },
-    { icon: <Setting />, text: `Setting`, href: `/setting` },
+    { icon: <Notification />, text: `Bildirishnomalar`, href: `/notifications` },
+    { icon: <Setting />, text: `Sozlamalar`, href: `/setting` },
   ];
 
   return (

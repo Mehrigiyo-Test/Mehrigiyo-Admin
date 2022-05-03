@@ -6,7 +6,7 @@
   list-style: none;
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
-  color: #282828;
+  // color: #282828;
 }
 *::selection {
   color: #fff;
@@ -27,5 +27,14 @@ body{
   background-color: #bbf7d0;
   border-radius: 50px;
   border: 0 solid transparent;
+}
+input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+.error-message{
+  color: red;
+  font-size: 10px;
 }
 

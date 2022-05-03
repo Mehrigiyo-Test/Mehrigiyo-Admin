@@ -20,10 +20,11 @@
     .Account_avatar {
       height: 84px;
       width: 84px;
-      background-color: gray;
+      background-color: #ebebeb;
       border-radius: 50%;
       margin-bottom: 16px;
-      overflow: hidden;
+      position: relative;
+      // overflow: hidden;
     }
 
     .Account_text {
@@ -58,10 +59,9 @@
         border: none;
         border-bottom: 1px solid #e2e2e2;
         padding-bottom: 13px;
-        &:focus{
+        &:focus {
           border-color: $green;
         }
-  
       }
 
       input::-webkit-outer-spin-button,
