@@ -16,6 +16,7 @@ const Login = ({ setOpen }) => {
   const [show, setShow] = useState(true);
   const [tab, setTab] = useState(true);
   const [input, setInput] = useState(false);
+
   const {
     control,
     register,
@@ -29,14 +30,17 @@ const Login = ({ setOpen }) => {
     formState: { errors: errors2 },
     handleSubmit: handleSubmit2,
   } = useForm();
+
   const navigate = useNavigate();
 
   // login - tizimga kirish
+
   const onSubmit = (data) => {
     let phoneNumber = data.username;
     phoneNumber = phoneNumber.replace(/[^0-9]+/g, "");
     data.username = phoneNumber;
     console.log(data);
+    
     requestApi.post("/login/", data).then((response) => {
       if (response.status === 200) {
         setToken(response.data.access);
